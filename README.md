@@ -1,1 +1,1 @@
-<img src="logo.xml">
+<img src="logo.svg">
