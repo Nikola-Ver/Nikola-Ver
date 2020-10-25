@@ -1,23 +1,15 @@
 <svg version="1.1" id="Ebene_1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink" height="100px" viewBox="0 0 200 100">
+    xmlns:xlink="http://www.w3.org/1999/xlink" height="100px" viewBox="0 0 250 100">
 
     <style type="text/css">
 text {
 filter: url(#filter);
-fill: white;
+fill: #6affa2;
 font-family: 'Share Tech Mono', sans-serif;
 font-size: 40px;
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
-}
-.info {
-color: white;
-font: 1em / 1 sans-serif;
-text-align: center;
-}
-.info a {
-color: white;
 }
 svg {
 width: fit-content;
@@ -26,13 +18,13 @@ display: block;
 position: relative;
 overflow: hidden;
 margin: 0 auto;
-background: black;
+background: transparent;
 margin-top: 40vh;
 }
     </style>
     <defs>
         <filter id="filter">
-            <feFlood flood-color="black" result="black" />
+            <feFlood flood-color="transparent" result="transparent" />
             <feFlood flood-color="red" result="flood1" />
             <feFlood flood-color="limegreen" result="flood2" />
             <feOffset in="SourceGraphic" dx="3" dy="0" result="off1a"/>
@@ -42,7 +34,7 @@ margin-top: 40vh;
             <feComposite in="flood1" in2="off1a" operator="in" result="comp1" />
             <feComposite in="flood2" in2="off2a" operator="in" result="comp2" />
             <feMerge x="0" width="100%" result="merge1">
-                <feMergeNode in = "black" />
+                <feMergeNode in = "transparent" />
                 <feMergeNode in = "comp1" />
                 <feMergeNode in = "off1b" />
                 <animate attributeName="y"
@@ -59,7 +51,7 @@ margin-top: 40vh;
                         repeatCount = "indefinite" />
             </feMerge>
             <feMerge x="0" width="100%" y="60px" height="65px" result="merge2">
-                <feMergeNode in = "black" />
+                <feMergeNode in = "transparent" />
                 <feMergeNode in = "comp2" />
                 <feMergeNode in = "off2b" />
                 <animate attributeName="y"
@@ -83,6 +75,6 @@ margin-top: 40vh;
         </filter>
     </defs>
     <g>
-        <text id="message-text" x="-5%" y="50%">Nikola-Ver</text>
+        <text id="message-text" x="0" y="50%">.Net problems</text>
     </g>
 </svg>
