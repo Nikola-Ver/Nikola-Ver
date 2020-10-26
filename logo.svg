@@ -25,8 +25,8 @@ margin-top: 40vh;
     <defs>
         <filter id="filter">
             <feFlood flood-color="transparent" result="transparent" />
-            <feFlood flood-color="red" result="flood1" />
-            <feFlood flood-color="green" result="flood2" />
+            <feFlood flood-color="#6affa2" result="flood1" />
+            <feFlood flood-color="#6affa2" result="flood2" />
             <feOffset in="SourceGraphic" dx="3" dy="0" result="off1a"/>
             <feOffset in="SourceGraphic" dx="2" dy="0" result="off1b"/>
             <feOffset in="SourceGraphic" dx="-3" dy="0" result="off2a"/>
