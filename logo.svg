@@ -5,7 +5,7 @@
     <style type="text/css">
         text {
         filter: url(#filter);
-        fill: #000;
+        fill: #586069;
         font-family: 'Share Tech Mono', sans-serif;
         font-size: 40px;
         -webkit-font-smoothing: antialiased;
