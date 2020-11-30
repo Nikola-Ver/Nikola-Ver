@@ -3,24 +3,24 @@
     xmlns:xlink="http://www.w3.org/1999/xlink" height="100px" viewBox="0 0 250 100">
 
     <style type="text/css">
-text {
-filter: url(#filter);
-fill: #6affa2;
-font-family: 'Share Tech Mono', sans-serif;
-font-size: 40px;
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
-}
-svg {
-width: fit-content;
-height: 120px;
-display: block;
-position: relative;
-overflow: hidden;
-margin: 0 auto;
-background: transparent;
-margin-top: 40vh;
-}
+        text {
+        filter: url(#filter);
+        fill: #000;
+        font-family: 'Share Tech Mono', sans-serif;
+        font-size: 40px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        }
+        svg {
+        width: fit-content;
+        height: 120px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+        background: transparent;
+        margin-top: 40vh;
+        }
     </style>
     <defs>
         <filter id="filter">
