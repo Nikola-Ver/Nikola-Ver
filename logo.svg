@@ -5,7 +5,7 @@
     <style type="text/css">
         text {
         filter: url(#filter);
-        fill: #2b2b2b;
+        fill: white;
         font-family: 'Share Tech Mono', sans-serif;
         font-size: 40px;
         -webkit-font-smoothing: antialiased;
@@ -18,13 +18,13 @@
         position: relative;
         overflow: hidden;
         margin: 0 auto;
-        background: #fff;
+        background: transparent;
         margin-top: 40vh;
         }
     </style>
     <defs>
         <filter id="filter">
-            <feFlood flood-color="#fff" result="transparent" />
+            <feFlood flood-color="transparent" result="transparent" />
             <feFlood flood-color="#6affa2" result="flood1" />
             <feFlood flood-color="#ff6aa2" result="flood2" />
             <feOffset in="SourceGraphic" dx="5" dy="0" result="off1a"/>
