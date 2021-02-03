@@ -1,0 +1,23 @@
+{
+  "name": "nikola-ver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "readme": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikola-Ver/Nikola-Ver.git"
+  },
+  "author": "nikola-ver",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nikola-Ver/Nikola-Ver/issues"
+  },
+  "homepage": "https://github.com/Nikola-Ver/Nikola-Ver#readme",
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
