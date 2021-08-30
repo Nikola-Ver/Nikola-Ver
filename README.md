@@ -12,21 +12,21 @@
     <img src="svg/full-stack.svg" />
 </div>
 
-<img height="20px" />
+<img height="15px" />
 
 <div align="center">
     <a href="https://www.linkedin.com/in/nikola-ver/">
         <img src="svg/linkedin.svg" />
     </a>
-    <img width="5px" />
+    <img width="10px" />
     <a href="mailto: nikolveresh@gmail.com">
         <img src="svg/email.svg" />
     </a>
-    <img width="5px" />
+    <img width="10px" />
     <a href="./svg/skype.txt">
         <img src="svg/skype.svg" />
     </a>
-    <img width="5px" />
+    <img width="10px" />
     <a href="https://www.codewars.com/users/Nikola-Ver">
         <img src="svg/codewars.svg" />
     </a>
