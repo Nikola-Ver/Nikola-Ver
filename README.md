@@ -16,19 +16,19 @@
 
 <div align="center">
     <a href="https://www.linkedin.com/in/nikola-ver/">
-        <img width="35px" src="svg/linkedin.svg" />
+        <img width="32px" src="svg/linkedin.svg" />
     </a>
     <img width="10px" />
     <a href="mailto: nikolveresh@gmail.com">
-        <img width="35px" src="svg/email.svg" />
+        <img width="32px" src="svg/email.svg" />
     </a>
     <img width="10px" />
     <a href="./svg/skype.txt">
-        <img width="35px" src="svg/skype.svg" />
+        <img width="32px" src="svg/skype.svg" />
     </a>
     <img width="10px" />
     <a href="https://www.codewars.com/users/Nikola-Ver">
-        <img width="35px" src="svg/codewars.svg" />
+        <img width="32px" src="svg/codewars.svg" />
     </a>
 </div>
 
