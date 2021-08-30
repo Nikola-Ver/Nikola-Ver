@@ -21,7 +21,7 @@
         <img src="svg/email.svg" />
     </a>
     <img width="5px" />
-    <a href="skype: kolia_ver?chat">
+    <a href="./svg/skype.txt">
         <img src="svg/skype.svg" />
     </a>
     <img width="5px" />
