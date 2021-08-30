@@ -13,5 +13,11 @@
 </div>
 
 <div align="center">
+    <img src="svg/linkedin.svg" />
+    <img width="5px" />
+    <img src="svg/email.svg" />
+</div>
+
+<div align="center">
     <img src="svg/bottom-waves.svg" />
 </div>
