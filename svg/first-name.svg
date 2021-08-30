@@ -12,9 +12,57 @@
     <path
         d="M106.963 22.2363L111.393 7.98047H114.873L107.227 29.9355C106.043 33.0996 104.162 34.6816 101.584 34.6816L100.969 34.6289L99.7559 34.4004V31.7637L100.635 31.834C101.736 31.834 102.592 31.6113 103.201 31.166C103.822 30.7207 104.332 29.9062 104.73 28.7227L105.451 26.7891L98.666 7.98047H102.217L106.963 22.2363Z" />
     <style>
+        @-webkit-keyframes stroke-animation {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @-moz-keyframes stroke-animation {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @-o-keyframes stroke-animation {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
         @keyframes stroke-animation {
             to {
                 stroke-dashoffset: 0;
+            }
+        }
+
+        @-webkit-keyframes fill-animation {
+            from {
+                fill: transparent;
+            }
+
+            to {
+                fill: #00CBA9;
+            }
+        }
+
+        @-moz-keyframes fill-animation {
+            from {
+                fill: transparent;
+            }
+
+            to {
+                fill: #00CBA9;
+            }
+        }
+
+        @-o-keyframes fill-animation {
+            from {
+                fill: transparent;
+            }
+
+            to {
+                fill: #00CBA9;
             }
         }
 
@@ -29,6 +77,9 @@
         }
 
         svg {
+            -webkit-animation: fill-animation 1s linear forwards 8s;
+            -moz-animation: fill-animation 1s linear forwards 8s;
+            -o-animation: fill-animation 1s linear forwards 8s;
             animation: fill-animation 1s linear forwards 8s;
         }
 
@@ -39,42 +90,63 @@
         path:nth-child(1) {
             stroke-dasharray: 152;
             stroke-dashoffset: 152;
+            -webkit-animation: stroke-animation 2s linear forwards;
+            -moz-animation: stroke-animation 2s linear forwards;
+            -o-animation: stroke-animation 2s linear forwards;
             animation: stroke-animation 2s linear forwards;
         }
 
         path:nth-child(2) {
             stroke-dasharray: 57;
             stroke-dashoffset: 57;
+            -webkit-animation: stroke-animation 2s linear forwards 0.9s;
+            -moz-animation: stroke-animation 2s linear forwards 0.9s;
+            -o-animation: stroke-animation 2s linear forwards 0.9s;
             animation: stroke-animation 2s linear forwards 0.9s;
         }
 
         path:nth-child(3) {
             stroke-dasharray: 115;
             stroke-dashoffset: 115;
+            -webkit-animation: stroke-animation 2s linear forwards 1.5s;
+            -moz-animation: stroke-animation 2s linear forwards 1.5s;
+            -o-animation: stroke-animation 2s linear forwards 1.5s;
             animation: stroke-animation 2s linear forwards 1.5s;
         }
 
         path:nth-child(4) {
             stroke-dasharray: 100;
             stroke-dashoffset: 100;
+            -webkit-animation: stroke-animation 2s linear forwards 2s;
+            -moz-animation: stroke-animation 2s linear forwards 2s;
+            -o-animation: stroke-animation 2s linear forwards 2s;
             animation: stroke-animation 2s linear forwards 2s;
         }
 
         path:nth-child(5) {
             stroke-dasharray: 61;
             stroke-dashoffset: 61;
+            -webkit-animation: stroke-animation 2s linear forwards 2.5s;
+            -moz-animation: stroke-animation 2s linear forwards 2.5s;
+            -o-animation: stroke-animation 2s linear forwards 2.5s;
             animation: stroke-animation 2s linear forwards 2.5s;
         }
 
         path:nth-child(6) {
             stroke-dasharray: 113;
             stroke-dashoffset: 113;
+            -webkit-animation: stroke-animation 2s linear forwards 3s;
+            -moz-animation: stroke-animation 2s linear forwards 3s;
+            -o-animation: stroke-animation 2s linear forwards 3s;
             animation: stroke-animation 2s linear forwards 3s;
         }
 
         path:nth-child(7) {
             stroke-dasharray: 102;
             stroke-dashoffset: 102;
+            -webkit-animation: stroke-animation 2s linear forwards 3.2s;
+            -moz-animation: stroke-animation 2s linear forwards 3.2s;
+            -o-animation: stroke-animation 2s linear forwards 3.2s;
             animation: stroke-animation 2s linear forwards 3.2s;
         }
     </style>
