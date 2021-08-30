@@ -12,6 +12,8 @@
     <img src="svg/full-stack.svg" />
 </div>
 
+<img height="20px" />
+
 <div align="center">
     <a href="https://www.linkedin.com/in/nikola-ver/">
         <img src="svg/linkedin.svg" />
