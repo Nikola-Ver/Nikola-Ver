@@ -1,4 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="12" />
     <path
         d="M12 2.02c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 12.55l-5.992-4.57h11.983l-5.991 4.57zm0 1.288l-6-4.629v6.771h12v-6.771l-6 4.629z" />
     <style>
@@ -40,6 +41,54 @@
             to {
                 fill: #FFF;
             }
+        }
+
+        @-webkit-keyframes circle-animation {
+            from {
+                fill: transparent;
+            }
+
+            to {
+                fill: #0d1117;
+            }
+        }
+
+        @-moz-keyframes circle-animation {
+            from {
+                fill: transparent;
+            }
+
+            to {
+                fill: #0d1117;
+            }
+        }
+
+        @-o-keyframes circle-animation {
+            from {
+                fill: transparent;
+            }
+
+            to {
+                fill: #0d1117;
+            }
+        }
+
+        @keyframes circle-animation {
+            from {
+                fill: transparent;
+            }
+
+            to {
+                fill: #0d1117;
+            }
+        }
+
+        circle {
+            fill: transparent;
+            -webkit-animation: circle-animation 1s linear forwards 11s;
+            -moz-animation: circle-animation 1s linear forwards 11s;
+            -o-animation: circle-animation 1s linear forwards 11s;
+            animation: circle-animation 1s linear forwards 11s;
         }
 
         path {
