@@ -4,10 +4,13 @@
 
 <div align="center">
     <img src="svg/first-name.svg" />
-    <img width="10px" />
+    <img width="6.5px" />
     <img src="svg/last-name.svg" />
 </div>
 
+<div align="center">
+    <img src="svg/full-stack.svg" />
+</div>
 
 <div align="center">
     <img src="svg/bottom-waves.svg" />
