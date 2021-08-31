@@ -215,7 +215,7 @@
 
             to {
                 fill: #FFF;
-                stroke: #00CBA9;
+                stroke: #58a6ff;
             }
         }
 
@@ -227,7 +227,7 @@
 
             to {
                 fill: #FFF;
-                stroke: #00CBA9;
+                stroke: #58a6ff;
             }
         }
 
@@ -239,7 +239,7 @@
 
             to {
                 fill: #FFF;
-                stroke: #00CBA9;
+                stroke: #58a6ff;
             }
         }
 
@@ -251,13 +251,13 @@
 
             to {
                 fill: #FFF;
-                stroke: #00CBA9;
+                stroke: #58a6ff;
             }
         }
 
         rect {
             height: 10%;
-            fill: #00CBA9;
+            fill: #58a6ff;
             -webkit-animation: rect-animation 2s linear forwards 9s;
             -moz-animation: rect-animation 2s linear forwards 9s;
             -o-animation: rect-animation 2s linear forwards 9s;

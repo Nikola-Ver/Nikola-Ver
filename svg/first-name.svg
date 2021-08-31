@@ -42,7 +42,7 @@
             }
 
             to {
-                fill: #00CBA9;
+                fill: #58a6ff;
             }
         }
 
@@ -52,7 +52,7 @@
             }
 
             to {
-                fill: #00CBA9;
+                fill: #58a6ff;
             }
         }
 
@@ -62,7 +62,7 @@
             }
 
             to {
-                fill: #00CBA9;
+                fill: #58a6ff;
             }
         }
 
@@ -72,7 +72,7 @@
             }
 
             to {
-                fill: #00CBA9;
+                fill: #58a6ff;
             }
         }
 
@@ -84,7 +84,7 @@
         }
 
         path {
-            stroke: #00CBA9;
+            stroke: #58a6ff;
         }
 
         path:nth-child(1) {
