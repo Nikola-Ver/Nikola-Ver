@@ -26,10 +26,6 @@
     <a href="./svg/skype.txt">
         <img width="32px" src="svg/skype.svg" />
     </a>
-    <img width="10px" />
-    <a href="https://www.codewars.com/users/Nikola-Ver">
-        <img width="32px" src="svg/codewars.svg" />
-    </a>
 </div>
 
 <div align="center">
