@@ -18,11 +18,11 @@
     <a href="https://www.linkedin.com/in/nikola-ver/">
         <img width="32px" src="svg/linkedin.svg" />
     </a>
-    <img width="10px" />
+    <img width="20px" />
     <a href="mailto: nikolveresh@gmail.com">
         <img width="32px" src="svg/email.svg" />
     </a>
-    <img width="10px" />
+    <img width="20px" />
     <a href="./svg/skype.txt">
         <img width="32px" src="svg/skype.svg" />
     </a>
