@@ -9,7 +9,7 @@
 </div>
 
 <div align="center">
-    <img src="svg/full-stack.svg" />
+    <img src="svg/engineer.svg" />
 </div>
 
 <img height="15px" />
