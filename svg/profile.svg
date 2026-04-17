@@ -1,0 +1,1011 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" role="img" aria-label="nikola_ver — Matrix">
+  <defs>
+    <style><![CDATA[
+      .mono { font-family: 'Fira Code', 'JetBrains Mono', Menlo, Consolas, monospace; }
+      .rain { font-family: 'Fira Code', Menlo, Consolas, monospace; font-size: 16px; }
+      /* Matrix stream: each character stays at a fixed Y, lights up when the head arrives,
+         then persists and fades as the tail. Per-row stagger makes the head travel down. */
+      @keyframes stream {
+        0%   { opacity: 0;    fill: #000000; }
+        1.5% { opacity: 1;    fill: #eaffea; }
+        3%   { opacity: 1;    fill: #c8ffc8; }
+        6%   { opacity: 0.95; fill: #00ff55; }
+        14%  { opacity: 0.85; fill: #00e03a; }
+        28%  { opacity: 0.65; fill: #00b02c; }
+        46%  { opacity: 0.42; fill: #008820; }
+        64%  { opacity: 0.24; fill: #005a14; }
+        80%  { opacity: 0.10; fill: #00380c; }
+        92%  { opacity: 0.03; fill: #001f05; }
+        100% { opacity: 0;    fill: #000000; }
+      }
+      .rain .ch { animation-name: stream; animation-timing-function: linear; animation-iteration-count: infinite; }
+      .s7  .ch { animation-duration: 7s; }
+      .s8  .ch { animation-duration: 8s; }
+      .s9  .ch { animation-duration: 9s; }
+      .s10 .ch { animation-duration: 10s; }
+      .s11 .ch { animation-duration: 11s; }
+      .s12 .ch { animation-duration: 12s; }
+
+      .label   { fill: #00ff41; opacity: 0.7; font-size: 14px; }
+      .line    { fill: #00ff41; font-size: 14px; }
+      .dim     { fill: #00c834; opacity: 0.85; font-size: 14px; }
+      .title   { fill: #c8ffc8; font-size: 46px; font-weight: 700; letter-spacing: 2px; }
+      .role    { fill: #00ff41; font-size: 22px; letter-spacing: 3px; }
+      .badge   { fill: #00ff41; font-size: 14px; letter-spacing: 2px; }
+      .boot    { fill: #00ff41; font-size: 15px; }
+      .boot-dim{ fill: #00c834; font-size: 15px; opacity: 0.9; }
+    ]]></style>
+    <radialGradient id="sphere" cx="38%" cy="36%" r="70%"><stop offset="0%" stop-color="#002a10" /><stop offset="60%" stop-color="#000a03" /><stop offset="100%" stop-color="#000000" /></radialGradient>
+    <radialGradient id="atmo" cx="50%" cy="50%" r="50%"><stop offset="82%" stop-color="#00ff41" stop-opacity="0" /><stop offset="94%" stop-color="#00ff41" stop-opacity="0.5" /><stop offset="100%" stop-color="#00ff41" stop-opacity="0" /></radialGradient>
+    <radialGradient id="highlight" cx="35%" cy="30%" r="45%"><stop offset="0%" stop-color="#00ff41" stop-opacity="0.12" /><stop offset="100%" stop-color="#00ff41" stop-opacity="0" /></radialGradient>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="75%"><stop offset="60%" stop-color="#000000" stop-opacity="0" /><stop offset="100%" stop-color="#000000" stop-opacity="0.75" /></radialGradient>
+    <linearGradient id="sweep" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00ff41" stop-opacity="0" /><stop offset="80%" stop-color="#00ff41" stop-opacity="0.15" /><stop offset="100%" stop-color="#c8ffc8" stop-opacity="0.75" /></linearGradient>
+    <clipPath id="globeClip"><circle cx="780" cy="320" r="130" /></clipPath>
+    <!-- Per-line typewriter reveals for the letter-by-letter appear animation -->
+    <clipPath id="cw"><rect x="80" y="92"  width="0" height="24"><animate attributeName="width" from="0" to="130" begin="6.50s" dur="0.20s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cn"><rect x="70" y="120" width="0" height="56"><animate attributeName="width" from="0" to="260" begin="6.70s" dur="0.30s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cv"><rect x="70" y="168" width="0" height="56"><animate attributeName="width" from="0" to="430" begin="7.00s" dur="0.45s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cr"><rect x="80" y="244" width="0" height="24"><animate attributeName="width" from="0" to="180" begin="7.45s" dur="0.22s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cse"><rect x="80" y="266" width="0" height="36"><animate attributeName="width" from="0" to="310" begin="7.67s" dur="0.32s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cs"><rect x="80" y="326" width="0" height="24"><animate attributeName="width" from="0" to="180" begin="7.99s" dur="0.22s" fill="freeze" /></rect></clipPath>
+    <clipPath id="ccl"><rect x="80" y="418" width="0" height="24"><animate attributeName="width" from="0" to="160" begin="9.00s" dur="0.22s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cc1"><rect x="80" y="444" width="0" height="24"><animate attributeName="width" from="0" to="280" begin="9.22s" dur="0.30s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cc2"><rect x="80" y="466" width="0" height="24"><animate attributeName="width" from="0" to="320" begin="9.42s" dur="0.32s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cc3"><rect x="80" y="488" width="0" height="24"><animate attributeName="width" from="0" to="260" begin="9.62s" dur="0.28s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cgt1"><rect x="600" y="488" width="0" height="18"><animate attributeName="width" from="0" to="360" begin="9.50s" dur="0.50s" fill="freeze" /></rect></clipPath>
+    <clipPath id="cgt2"><rect x="650" y="508" width="0" height="16"><animate attributeName="width" from="0" to="260" begin="10.00s" dur="0.35s" fill="freeze" /></rect></clipPath>
+    <!-- Matrix cascade reveal: content is unveiled top-down following a waterfall of glyphs -->
+    <clipPath id="typeClip"><rect x="80" y="352" width="0" height="24"><animate attributeName="width" values="0;420;420;0;0" keyTimes="0;0.17;0.88;0.92;1" dur="9s" begin="8.30s" repeatCount="indefinite" /></rect></clipPath>
+    <clipPath id="typeClip2"><rect x="80" y="374" width="0" height="24"><animate attributeName="width" values="0;0;380;380;0;0" keyTimes="0;0.22;0.39;0.82;0.86;1" dur="9s" begin="8.30s" repeatCount="indefinite" /></rect></clipPath>
+
+    <!-- BOOT clip rects sized to cover full line including [ ok ] / [ done ] tspan -->
+    <clipPath id="b1"><rect x="70" y="90"  width="0" height="22"><animate attributeName="width" from="0" to="260" begin="0.4s" dur="0.9s" fill="freeze" /></rect></clipPath>
+    <clipPath id="b2"><rect x="70" y="115" width="0" height="22"><animate attributeName="width" from="0" to="440" begin="1.4s" dur="0.8s" fill="freeze" /></rect></clipPath>
+    <clipPath id="b3"><rect x="70" y="148" width="0" height="22"><animate attributeName="width" from="0" to="340" begin="2.3s" dur="0.9s" fill="freeze" /></rect></clipPath>
+    <clipPath id="b4"><rect x="70" y="173" width="0" height="22"><animate attributeName="width" from="0" to="440" begin="3.3s" dur="0.9s" fill="freeze" /></rect></clipPath>
+    <clipPath id="b5"><rect x="70" y="206" width="0" height="22"><animate attributeName="width" from="0" to="280" begin="4.3s" dur="0.7s" fill="freeze" /></rect></clipPath>
+    <clipPath id="b6"><rect x="70" y="231" width="0" height="22"><animate attributeName="width" from="0" to="410" begin="5.1s" dur="0.8s" fill="freeze" /></rect></clipPath>
+    <clipPath id="b7"><rect x="70" y="264" width="0" height="22"><animate attributeName="width" from="0" to="80"  begin="6s"   dur="0.3s" fill="freeze" /></rect></clipPath>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+    <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.2" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+    <filter id="bigGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="6" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge></filter>
+  </defs>
+
+  <rect width="1000" height="640" fill="#000000" />
+
+  <!-- terminal frame (always visible) -->
+  <rect x="40" y="30" width="920" height="580" rx="10" fill="#000000" fill-opacity="0.72" stroke="#00ff41" stroke-width="1.2">
+    <animate attributeName="stroke-opacity" values="0;0.7;0.55;0.9;0.55" keyTimes="0;0.05;0.4;0.7;1" dur="20s" fill="freeze" />
+    <animate attributeName="stroke-opacity" values="0.55;0.9;0.55;0.4;0.55" dur="4s" begin="6s" repeatCount="indefinite" />
+  </rect>
+  <rect x="40" y="30" width="920" height="32" rx="10" fill="#001a06" fill-opacity="0.85" stroke="#00ff41" stroke-opacity="0.55" stroke-width="1.2" />
+  <rect x="40" y="50" width="920" height="12" fill="#001a06" fill-opacity="0.85" />
+  <circle cx="62" cy="46" r="5" fill="#ff5f56"><animate attributeName="opacity" values="1;0.6;1" dur="3s" begin="6s" repeatCount="indefinite" /></circle>
+  <circle cx="80" cy="46" r="5" fill="#ffbd2e"><animate attributeName="opacity" values="1;0.6;1" dur="3.4s" begin="6s" repeatCount="indefinite" /></circle>
+  <circle cx="98" cy="46" r="5" fill="#27c93f"><animate attributeName="opacity" values="1;0.6;1" dur="2.8s" begin="6s" repeatCount="indefinite" /></circle>
+  <text x="500" y="51" text-anchor="middle" class="mono" fill="#00ff41" font-size="12" opacity="0.8">nikola_ver@matrix : ~ / profile</text>
+
+  <!-- ============================================================ -->
+  <!-- BOOT SEQUENCE                                                 -->
+  <!-- ============================================================ -->
+  <g id="boot" class="mono">
+    <animate attributeName="opacity" from="1" to="0" begin="6.5s" dur="0.5s" fill="freeze" />
+
+    <g clip-path="url(#b1)"><text x="70" y="108" class="boot">$ ssh nikola_ver@matrix.net</text></g>
+    <g clip-path="url(#b2)"><text x="70" y="133" class="boot-dim">[+] connecting to the grid .......... <tspan fill="#c8ffc8">[ ok ]</tspan></text></g>
+    <g clip-path="url(#b3)"><text x="70" y="166" class="boot">$ sudo ./reveal.sh --user nikola_ver</text></g>
+    <g clip-path="url(#b4)"><text x="70" y="191" class="boot-dim">[*] decrypting identity ............ <tspan fill="#c8ffc8">[ done ]</tspan></text></g>
+    <g clip-path="url(#b5)"><text x="70" y="224" class="boot">$ ./render_profile.sh --boot</text></g>
+    <g clip-path="url(#b6)"><text x="70" y="249" class="boot-dim">[+] initializing matrix .......... <tspan fill="#c8ffc8">[ ok ]</tspan></text></g>
+    <g clip-path="url(#b7)"><text x="70" y="282" class="boot">$ clear</text></g>
+
+    <!-- caret slides with each typing line, then jumps to next line's start -->
+    <rect x="70" y="94" width="8" height="16" fill="#00ff41">
+      <animate attributeName="x"
+        values="70;70;330;70;510;70;410;70;510;70;350;70;480;70;150;150"
+        keyTimes="0;0.062;0.200;0.215;0.338;0.354;0.492;0.508;0.646;0.662;0.769;0.785;0.908;0.923;0.969;1"
+        dur="6.5s" fill="freeze" />
+      <animate attributeName="y"
+        values="94;94;94;119;119;152;152;177;177;210;210;235;235;268;268;268"
+        keyTimes="0;0.062;0.200;0.215;0.338;0.354;0.492;0.508;0.646;0.662;0.769;0.785;0.908;0.923;0.969;1"
+        dur="6.5s" fill="freeze" />
+      <animate attributeName="opacity" values="1;0;1" dur="0.5s" repeatCount="indefinite" />
+    </rect>
+  </g>
+
+  <!-- transition flash on clear -->
+  <rect width="1000" height="640" fill="#eaffea" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.85;0.25;0" keyTimes="0;0.93;0.955;0.98;1" dur="7s" fill="freeze" />
+  </rect>
+
+
+  <!-- ============================================================ -->
+  <!-- MAIN SCENE                                                    -->
+  <!-- ============================================================ -->
+  <g id="main" opacity="0">
+    <animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="6.45s" fill="freeze" />
+
+    <!-- MATRIX RAIN: fixed-position chars, staggered opacity so head travels down while tail fades -->
+    <g class="rain">
+      <g transform="translate(18 0)" class="s8">
+        <text y="72" class="ch" style="animation-delay:-3.16s">ｳ</text>
+        <text y="94" class="ch" style="animation-delay:-2.97s">ﾓ</text>
+        <text y="116" class="ch" style="animation-delay:-2.77s">ﾜ</text>
+        <text y="138" class="ch" style="animation-delay:-2.58s">ﾚ</text>
+        <text y="160" class="ch" style="animation-delay:-2.39s">ｼ</text>
+        <text y="182" class="ch" style="animation-delay:-2.20s">ﾗ</text>
+        <text y="204" class="ch" style="animation-delay:-2.01s">ﾋ</text>
+        <text y="226" class="ch" style="animation-delay:-1.82s">ｻ</text>
+        <text y="248" class="ch" style="animation-delay:-1.62s">6</text>
+        <text y="270" class="ch" style="animation-delay:-1.43s">4</text>
+        <text y="292" class="ch" style="animation-delay:-1.24s">ﾅ</text>
+        <text y="314" class="ch" style="animation-delay:-1.05s">ｽ</text>
+        <text y="336" class="ch" style="animation-delay:-0.86s">ｻ</text>
+        <text y="358" class="ch" style="animation-delay:-0.67s">5</text>
+        <text y="380" class="ch" style="animation-delay:-0.47s">ｼ</text>
+        <text y="402" class="ch" style="animation-delay:-0.28s">ﾘ</text>
+        <text y="424" class="ch" style="animation-delay:-0.09s">ｾ</text>
+        <text y="446" class="ch" style="animation-delay:0.10s">ｼ</text>
+        <text y="468" class="ch" style="animation-delay:0.29s">1</text>
+        <text y="490" class="ch" style="animation-delay:0.49s">ｳ</text>
+        <text y="512" class="ch" style="animation-delay:0.68s">ｾ</text>
+        <text y="534" class="ch" style="animation-delay:0.87s">ｰ</text>
+        <text y="556" class="ch" style="animation-delay:1.06s">ﾎ</text>
+        <text y="578" class="ch" style="animation-delay:1.25s">ｺ</text>
+      </g>
+      <g transform="translate(53 0)" class="s11">
+        <text y="72" class="ch" style="animation-delay:-1.30s">ﾁ</text>
+        <text y="94" class="ch" style="animation-delay:-1.09s">ｶ</text>
+        <text y="116" class="ch" style="animation-delay:-0.88s">ﾂ</text>
+        <text y="138" class="ch" style="animation-delay:-0.67s">ｷ</text>
+        <text y="160" class="ch" style="animation-delay:-0.47s">ﾛ</text>
+        <text y="182" class="ch" style="animation-delay:-0.26s">ﾜ</text>
+        <text y="204" class="ch" style="animation-delay:-0.05s">ﾅ</text>
+        <text y="226" class="ch" style="animation-delay:0.15s">ｼ</text>
+        <text y="248" class="ch" style="animation-delay:0.36s">ﾕ</text>
+        <text y="270" class="ch" style="animation-delay:0.57s">-</text>
+        <text y="292" class="ch" style="animation-delay:0.77s">5</text>
+        <text y="314" class="ch" style="animation-delay:0.98s">ﾄ</text>
+        <text y="336" class="ch" style="animation-delay:1.19s">Z</text>
+        <text y="358" class="ch" style="animation-delay:1.40s">9</text>
+        <text y="380" class="ch" style="animation-delay:1.60s">ﾚ</text>
+        <text y="402" class="ch" style="animation-delay:1.81s">ｿ</text>
+        <text y="424" class="ch" style="animation-delay:2.02s">ﾀ</text>
+        <text y="446" class="ch" style="animation-delay:2.22s">ｶ</text>
+        <text y="468" class="ch" style="animation-delay:2.43s">ﾀ</text>
+        <text y="490" class="ch" style="animation-delay:2.64s">ﾆ</text>
+        <text y="512" class="ch" style="animation-delay:2.85s">ｿ</text>
+        <text y="534" class="ch" style="animation-delay:3.05s">-</text>
+        <text y="556" class="ch" style="animation-delay:3.26s">ﾔ</text>
+        <text y="578" class="ch" style="animation-delay:3.47s">8</text>
+      </g>
+      <g transform="translate(88 0)" class="s7">
+        <text y="72" class="ch" style="animation-delay:-0.83s">4</text>
+        <text y="94" class="ch" style="animation-delay:-0.64s">ﾒ</text>
+        <text y="116" class="ch" style="animation-delay:-0.45s">ﾔ</text>
+        <text y="138" class="ch" style="animation-delay:-0.27s">ﾏ</text>
+        <text y="160" class="ch" style="animation-delay:-0.08s">*</text>
+        <text y="182" class="ch" style="animation-delay:0.10s">4</text>
+        <text y="204" class="ch" style="animation-delay:0.29s">ｰ</text>
+        <text y="226" class="ch" style="animation-delay:0.48s">ﾓ</text>
+        <text y="248" class="ch" style="animation-delay:0.66s">ﾄ</text>
+        <text y="270" class="ch" style="animation-delay:0.85s">ﾔ</text>
+        <text y="292" class="ch" style="animation-delay:1.03s">ﾖ</text>
+        <text y="314" class="ch" style="animation-delay:1.22s">-</text>
+        <text y="336" class="ch" style="animation-delay:1.41s">9</text>
+        <text y="358" class="ch" style="animation-delay:1.59s">ﾅ</text>
+        <text y="380" class="ch" style="animation-delay:1.78s">ｻ</text>
+        <text y="402" class="ch" style="animation-delay:1.96s">ｦ</text>
+        <text y="424" class="ch" style="animation-delay:2.15s">+</text>
+        <text y="446" class="ch" style="animation-delay:2.34s">ﾅ</text>
+        <text y="468" class="ch" style="animation-delay:2.52s">ｼ</text>
+        <text y="490" class="ch" style="animation-delay:2.71s">ﾁ</text>
+        <text y="512" class="ch" style="animation-delay:2.89s">8</text>
+        <text y="534" class="ch" style="animation-delay:3.08s">ｸ</text>
+        <text y="556" class="ch" style="animation-delay:3.27s">0</text>
+        <text y="578" class="ch" style="animation-delay:3.45s">ﾖ</text>
+      </g>
+      <g transform="translate(123 0)" class="s10">
+        <text y="72" class="ch" style="animation-delay:-3.55s">ｵ</text>
+        <text y="94" class="ch" style="animation-delay:-3.41s">-</text>
+        <text y="116" class="ch" style="animation-delay:-3.27s">ｼ</text>
+        <text y="138" class="ch" style="animation-delay:-3.12s">ﾗ</text>
+        <text y="160" class="ch" style="animation-delay:-2.98s">ｸ</text>
+        <text y="182" class="ch" style="animation-delay:-2.84s">ｱ</text>
+        <text y="204" class="ch" style="animation-delay:-2.69s">ﾀ</text>
+        <text y="226" class="ch" style="animation-delay:-2.55s">1</text>
+        <text y="248" class="ch" style="animation-delay:-2.41s">1</text>
+        <text y="270" class="ch" style="animation-delay:-2.26s">-</text>
+        <text y="292" class="ch" style="animation-delay:-2.12s">ﾆ</text>
+        <text y="314" class="ch" style="animation-delay:-1.97s">ﾒ</text>
+        <text y="336" class="ch" style="animation-delay:-1.83s">8</text>
+        <text y="358" class="ch" style="animation-delay:-1.69s">2</text>
+        <text y="380" class="ch" style="animation-delay:-1.54s">ｲ</text>
+        <text y="402" class="ch" style="animation-delay:-1.40s">ﾎ</text>
+        <text y="424" class="ch" style="animation-delay:-1.26s">6</text>
+        <text y="446" class="ch" style="animation-delay:-1.11s">ｲ</text>
+        <text y="468" class="ch" style="animation-delay:-0.97s">4</text>
+        <text y="490" class="ch" style="animation-delay:-0.83s">ﾙ</text>
+        <text y="512" class="ch" style="animation-delay:-0.68s">ﾝ</text>
+        <text y="534" class="ch" style="animation-delay:-0.54s">ﾈ</text>
+        <text y="556" class="ch" style="animation-delay:-0.40s">ﾏ</text>
+        <text y="578" class="ch" style="animation-delay:-0.25s">ﾆ</text>
+      </g>
+      <g transform="translate(158 0)" class="s8">
+        <text y="72" class="ch" style="animation-delay:-5.27s">1</text>
+        <text y="94" class="ch" style="animation-delay:-5.10s">*</text>
+        <text y="116" class="ch" style="animation-delay:-4.93s">ｶ</text>
+        <text y="138" class="ch" style="animation-delay:-4.76s">ﾍ</text>
+        <text y="160" class="ch" style="animation-delay:-4.60s">ｸ</text>
+        <text y="182" class="ch" style="animation-delay:-4.43s">0</text>
+        <text y="204" class="ch" style="animation-delay:-4.26s">ﾃ</text>
+        <text y="226" class="ch" style="animation-delay:-4.09s">4</text>
+        <text y="248" class="ch" style="animation-delay:-3.92s">ﾛ</text>
+        <text y="270" class="ch" style="animation-delay:-3.75s">ﾄ</text>
+        <text y="292" class="ch" style="animation-delay:-3.59s">ｱ</text>
+        <text y="314" class="ch" style="animation-delay:-3.42s">ｳ</text>
+        <text y="336" class="ch" style="animation-delay:-3.25s">9</text>
+        <text y="358" class="ch" style="animation-delay:-3.08s">1</text>
+        <text y="380" class="ch" style="animation-delay:-2.91s">1</text>
+        <text y="402" class="ch" style="animation-delay:-2.75s">2</text>
+        <text y="424" class="ch" style="animation-delay:-2.58s">1</text>
+        <text y="446" class="ch" style="animation-delay:-2.41s">ﾂ</text>
+        <text y="468" class="ch" style="animation-delay:-2.24s">=</text>
+        <text y="490" class="ch" style="animation-delay:-2.07s">2</text>
+        <text y="512" class="ch" style="animation-delay:-1.90s">ｼ</text>
+        <text y="534" class="ch" style="animation-delay:-1.74s">ｷ</text>
+        <text y="556" class="ch" style="animation-delay:-1.57s">ﾅ</text>
+        <text y="578" class="ch" style="animation-delay:-1.40s">ﾕ</text>
+      </g>
+      <g transform="translate(193 0)" class="s7">
+        <text y="72" class="ch" style="animation-delay:-2.38s">ｳ</text>
+        <text y="94" class="ch" style="animation-delay:-2.17s">ﾂ</text>
+        <text y="116" class="ch" style="animation-delay:-1.96s">0</text>
+        <text y="138" class="ch" style="animation-delay:-1.75s">ﾏ</text>
+        <text y="160" class="ch" style="animation-delay:-1.54s">ﾜ</text>
+        <text y="182" class="ch" style="animation-delay:-1.33s">ﾚ</text>
+        <text y="204" class="ch" style="animation-delay:-1.12s">ﾐ</text>
+        <text y="226" class="ch" style="animation-delay:-0.91s">ﾓ</text>
+        <text y="248" class="ch" style="animation-delay:-0.70s">ﾕ</text>
+        <text y="270" class="ch" style="animation-delay:-0.49s">ﾝ</text>
+        <text y="292" class="ch" style="animation-delay:-0.28s">ﾏ</text>
+        <text y="314" class="ch" style="animation-delay:-0.06s">ﾇ</text>
+        <text y="336" class="ch" style="animation-delay:0.15s">ﾖ</text>
+        <text y="358" class="ch" style="animation-delay:0.36s">ﾚ</text>
+        <text y="380" class="ch" style="animation-delay:0.57s">+</text>
+        <text y="402" class="ch" style="animation-delay:0.78s">ﾘ</text>
+        <text y="424" class="ch" style="animation-delay:0.99s">ｵ</text>
+        <text y="446" class="ch" style="animation-delay:1.20s">*</text>
+        <text y="468" class="ch" style="animation-delay:1.41s">Z</text>
+        <text y="490" class="ch" style="animation-delay:1.62s">=</text>
+        <text y="512" class="ch" style="animation-delay:1.83s">=</text>
+        <text y="534" class="ch" style="animation-delay:2.04s">ﾁ</text>
+        <text y="556" class="ch" style="animation-delay:2.25s">ﾆ</text>
+        <text y="578" class="ch" style="animation-delay:2.46s">ﾃ</text>
+      </g>
+      <g transform="translate(228 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-6.66s">=</text>
+        <text y="94" class="ch" style="animation-delay:-6.51s">ｹ</text>
+        <text y="116" class="ch" style="animation-delay:-6.35s">ﾊ</text>
+        <text y="138" class="ch" style="animation-delay:-6.19s">ﾕ</text>
+        <text y="160" class="ch" style="animation-delay:-6.04s">ﾚ</text>
+        <text y="182" class="ch" style="animation-delay:-5.88s">ﾃ</text>
+        <text y="204" class="ch" style="animation-delay:-5.73s">ﾐ</text>
+        <text y="226" class="ch" style="animation-delay:-5.57s">ｿ</text>
+        <text y="248" class="ch" style="animation-delay:-5.41s">ｻ</text>
+        <text y="270" class="ch" style="animation-delay:-5.26s">ﾍ</text>
+        <text y="292" class="ch" style="animation-delay:-5.10s">ﾚ</text>
+        <text y="314" class="ch" style="animation-delay:-4.94s">ﾒ</text>
+        <text y="336" class="ch" style="animation-delay:-4.79s">ﾙ</text>
+        <text y="358" class="ch" style="animation-delay:-4.63s">ｾ</text>
+        <text y="380" class="ch" style="animation-delay:-4.47s">ﾌ</text>
+        <text y="402" class="ch" style="animation-delay:-4.32s">ｾ</text>
+        <text y="424" class="ch" style="animation-delay:-4.16s">ｷ</text>
+        <text y="446" class="ch" style="animation-delay:-4.01s">ｽ</text>
+        <text y="468" class="ch" style="animation-delay:-3.85s">2</text>
+        <text y="490" class="ch" style="animation-delay:-3.69s">ﾈ</text>
+        <text y="512" class="ch" style="animation-delay:-3.54s">ﾑ</text>
+        <text y="534" class="ch" style="animation-delay:-3.38s">-</text>
+        <text y="556" class="ch" style="animation-delay:-3.22s">ﾙ</text>
+        <text y="578" class="ch" style="animation-delay:-3.07s">ﾐ</text>
+      </g>
+      <g transform="translate(263 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-4.25s">ｷ</text>
+        <text y="94" class="ch" style="animation-delay:-3.95s">ﾖ</text>
+        <text y="116" class="ch" style="animation-delay:-3.65s">8</text>
+        <text y="138" class="ch" style="animation-delay:-3.36s">ﾖ</text>
+        <text y="160" class="ch" style="animation-delay:-3.06s">ﾚ</text>
+        <text y="182" class="ch" style="animation-delay:-2.76s">ﾆ</text>
+        <text y="204" class="ch" style="animation-delay:-2.46s">ｾ</text>
+        <text y="226" class="ch" style="animation-delay:-2.16s">ﾂ</text>
+        <text y="248" class="ch" style="animation-delay:-1.86s">ﾈ</text>
+        <text y="270" class="ch" style="animation-delay:-1.57s">+</text>
+        <text y="292" class="ch" style="animation-delay:-1.27s">ﾑ</text>
+        <text y="314" class="ch" style="animation-delay:-0.97s">ﾔ</text>
+        <text y="336" class="ch" style="animation-delay:-0.67s">ﾕ</text>
+        <text y="358" class="ch" style="animation-delay:-0.37s">=</text>
+        <text y="380" class="ch" style="animation-delay:-0.07s">0</text>
+        <text y="402" class="ch" style="animation-delay:0.22s">=</text>
+        <text y="424" class="ch" style="animation-delay:0.52s">ﾖ</text>
+        <text y="446" class="ch" style="animation-delay:0.82s">ﾆ</text>
+        <text y="468" class="ch" style="animation-delay:1.12s">ﾘ</text>
+        <text y="490" class="ch" style="animation-delay:1.42s">0</text>
+        <text y="512" class="ch" style="animation-delay:1.72s">ﾑ</text>
+        <text y="534" class="ch" style="animation-delay:2.01s">=</text>
+        <text y="556" class="ch" style="animation-delay:2.31s">ｴ</text>
+        <text y="578" class="ch" style="animation-delay:2.61s">6</text>
+      </g>
+      <g transform="translate(298 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-0.78s">1</text>
+        <text y="94" class="ch" style="animation-delay:-0.51s">Z</text>
+        <text y="116" class="ch" style="animation-delay:-0.25s">2</text>
+        <text y="138" class="ch" style="animation-delay:0.02s">ﾆ</text>
+        <text y="160" class="ch" style="animation-delay:0.28s">ｹ</text>
+        <text y="182" class="ch" style="animation-delay:0.55s">ﾒ</text>
+        <text y="204" class="ch" style="animation-delay:0.82s">ｱ</text>
+        <text y="226" class="ch" style="animation-delay:1.08s">ﾐ</text>
+        <text y="248" class="ch" style="animation-delay:1.35s">ﾏ</text>
+        <text y="270" class="ch" style="animation-delay:1.62s">Z</text>
+        <text y="292" class="ch" style="animation-delay:1.88s">ﾃ</text>
+        <text y="314" class="ch" style="animation-delay:2.15s">+</text>
+        <text y="336" class="ch" style="animation-delay:2.41s">ﾖ</text>
+        <text y="358" class="ch" style="animation-delay:2.68s">ﾏ</text>
+        <text y="380" class="ch" style="animation-delay:2.95s">ｱ</text>
+        <text y="402" class="ch" style="animation-delay:3.21s">ﾊ</text>
+        <text y="424" class="ch" style="animation-delay:3.48s">1</text>
+        <text y="446" class="ch" style="animation-delay:3.75s">ﾂ</text>
+        <text y="468" class="ch" style="animation-delay:4.01s">ﾎ</text>
+        <text y="490" class="ch" style="animation-delay:4.28s">6</text>
+        <text y="512" class="ch" style="animation-delay:4.54s">ｷ</text>
+        <text y="534" class="ch" style="animation-delay:4.81s">ﾗ</text>
+        <text y="556" class="ch" style="animation-delay:5.08s">ﾐ</text>
+        <text y="578" class="ch" style="animation-delay:5.34s">ﾇ</text>
+      </g>
+      <g transform="translate(333 0)" class="s11">
+        <text y="72" class="ch" style="animation-delay:-2.65s">ﾉ</text>
+        <text y="94" class="ch" style="animation-delay:-2.47s">ﾍ</text>
+        <text y="116" class="ch" style="animation-delay:-2.30s">4</text>
+        <text y="138" class="ch" style="animation-delay:-2.12s">ｱ</text>
+        <text y="160" class="ch" style="animation-delay:-1.95s">ｼ</text>
+        <text y="182" class="ch" style="animation-delay:-1.78s">ﾙ</text>
+        <text y="204" class="ch" style="animation-delay:-1.60s">9</text>
+        <text y="226" class="ch" style="animation-delay:-1.43s">4</text>
+        <text y="248" class="ch" style="animation-delay:-1.25s">ｱ</text>
+        <text y="270" class="ch" style="animation-delay:-1.08s">ﾏ</text>
+        <text y="292" class="ch" style="animation-delay:-0.91s">ﾊ</text>
+        <text y="314" class="ch" style="animation-delay:-0.73s">7</text>
+        <text y="336" class="ch" style="animation-delay:-0.56s">ｶ</text>
+        <text y="358" class="ch" style="animation-delay:-0.38s">0</text>
+        <text y="380" class="ch" style="animation-delay:-0.21s">ﾏ</text>
+        <text y="402" class="ch" style="animation-delay:-0.04s">ｴ</text>
+        <text y="424" class="ch" style="animation-delay:0.14s">ﾃ</text>
+        <text y="446" class="ch" style="animation-delay:0.31s">+</text>
+        <text y="468" class="ch" style="animation-delay:0.49s">ﾘ</text>
+        <text y="490" class="ch" style="animation-delay:0.66s">ｼ</text>
+        <text y="512" class="ch" style="animation-delay:0.83s">ﾉ</text>
+        <text y="534" class="ch" style="animation-delay:1.01s">=</text>
+        <text y="556" class="ch" style="animation-delay:1.18s">ﾂ</text>
+        <text y="578" class="ch" style="animation-delay:1.36s">ｼ</text>
+      </g>
+      <g transform="translate(368 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-0.38s">ﾜ</text>
+        <text y="94" class="ch" style="animation-delay:-0.20s">8</text>
+        <text y="116" class="ch" style="animation-delay:-0.02s">ﾐ</text>
+        <text y="138" class="ch" style="animation-delay:0.16s">ﾅ</text>
+        <text y="160" class="ch" style="animation-delay:0.34s">7</text>
+        <text y="182" class="ch" style="animation-delay:0.52s">ﾉ</text>
+        <text y="204" class="ch" style="animation-delay:0.70s">ﾑ</text>
+        <text y="226" class="ch" style="animation-delay:0.88s">ｲ</text>
+        <text y="248" class="ch" style="animation-delay:1.06s">8</text>
+        <text y="270" class="ch" style="animation-delay:1.24s">=</text>
+        <text y="292" class="ch" style="animation-delay:1.42s">ﾀ</text>
+        <text y="314" class="ch" style="animation-delay:1.60s">ﾍ</text>
+        <text y="336" class="ch" style="animation-delay:1.78s">ﾑ</text>
+        <text y="358" class="ch" style="animation-delay:1.96s">8</text>
+        <text y="380" class="ch" style="animation-delay:2.14s">ﾎ</text>
+        <text y="402" class="ch" style="animation-delay:2.32s">4</text>
+        <text y="424" class="ch" style="animation-delay:2.50s">ﾘ</text>
+        <text y="446" class="ch" style="animation-delay:2.68s">1</text>
+        <text y="468" class="ch" style="animation-delay:2.86s">7</text>
+        <text y="490" class="ch" style="animation-delay:3.04s">ﾄ</text>
+        <text y="512" class="ch" style="animation-delay:3.22s">ﾓ</text>
+        <text y="534" class="ch" style="animation-delay:3.40s">ｽ</text>
+        <text y="556" class="ch" style="animation-delay:3.57s">5</text>
+        <text y="578" class="ch" style="animation-delay:3.75s">ﾓ</text>
+      </g>
+      <g transform="translate(403 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-7.06s">ﾏ</text>
+        <text y="94" class="ch" style="animation-delay:-6.88s">ﾚ</text>
+        <text y="116" class="ch" style="animation-delay:-6.71s">ﾃ</text>
+        <text y="138" class="ch" style="animation-delay:-6.53s">ﾇ</text>
+        <text y="160" class="ch" style="animation-delay:-6.36s">ﾎ</text>
+        <text y="182" class="ch" style="animation-delay:-6.19s">Z</text>
+        <text y="204" class="ch" style="animation-delay:-6.01s">ｾ</text>
+        <text y="226" class="ch" style="animation-delay:-5.84s">ﾜ</text>
+        <text y="248" class="ch" style="animation-delay:-5.66s">1</text>
+        <text y="270" class="ch" style="animation-delay:-5.49s">*</text>
+        <text y="292" class="ch" style="animation-delay:-5.32s">ｹ</text>
+        <text y="314" class="ch" style="animation-delay:-5.14s">ｾ</text>
+        <text y="336" class="ch" style="animation-delay:-4.97s">ｹ</text>
+        <text y="358" class="ch" style="animation-delay:-4.79s">6</text>
+        <text y="380" class="ch" style="animation-delay:-4.62s">2</text>
+        <text y="402" class="ch" style="animation-delay:-4.44s">ﾔ</text>
+        <text y="424" class="ch" style="animation-delay:-4.27s">4</text>
+        <text y="446" class="ch" style="animation-delay:-4.10s">ﾑ</text>
+        <text y="468" class="ch" style="animation-delay:-3.92s">ﾙ</text>
+        <text y="490" class="ch" style="animation-delay:-3.75s">ﾄ</text>
+        <text y="512" class="ch" style="animation-delay:-3.57s">ｻ</text>
+        <text y="534" class="ch" style="animation-delay:-3.40s">ﾚ</text>
+        <text y="556" class="ch" style="animation-delay:-3.23s">ﾊ</text>
+        <text y="578" class="ch" style="animation-delay:-3.05s">ﾔ</text>
+      </g>
+      <g transform="translate(438 0)" class="s10">
+        <text y="72" class="ch" style="animation-delay:-7.03s">0</text>
+        <text y="94" class="ch" style="animation-delay:-6.80s">ﾌ</text>
+        <text y="116" class="ch" style="animation-delay:-6.57s">ｺ</text>
+        <text y="138" class="ch" style="animation-delay:-6.35s">ﾅ</text>
+        <text y="160" class="ch" style="animation-delay:-6.12s">ｵ</text>
+        <text y="182" class="ch" style="animation-delay:-5.89s">ﾈ</text>
+        <text y="204" class="ch" style="animation-delay:-5.66s">ﾂ</text>
+        <text y="226" class="ch" style="animation-delay:-5.43s">ﾆ</text>
+        <text y="248" class="ch" style="animation-delay:-5.20s">ﾍ</text>
+        <text y="270" class="ch" style="animation-delay:-4.97s">ｦ</text>
+        <text y="292" class="ch" style="animation-delay:-4.75s">ｰ</text>
+        <text y="314" class="ch" style="animation-delay:-4.52s">ｶ</text>
+        <text y="336" class="ch" style="animation-delay:-4.29s">ｦ</text>
+        <text y="358" class="ch" style="animation-delay:-4.06s">ｱ</text>
+        <text y="380" class="ch" style="animation-delay:-3.83s">5</text>
+        <text y="402" class="ch" style="animation-delay:-3.60s">ﾍ</text>
+        <text y="424" class="ch" style="animation-delay:-3.37s">2</text>
+        <text y="446" class="ch" style="animation-delay:-3.14s">ﾏ</text>
+        <text y="468" class="ch" style="animation-delay:-2.92s">-</text>
+        <text y="490" class="ch" style="animation-delay:-2.69s">ﾉ</text>
+        <text y="512" class="ch" style="animation-delay:-2.46s">ｻ</text>
+        <text y="534" class="ch" style="animation-delay:-2.23s">ｲ</text>
+        <text y="556" class="ch" style="animation-delay:-2.00s">ｼ</text>
+        <text y="578" class="ch" style="animation-delay:-1.77s">ｶ</text>
+      </g>
+      <g transform="translate(473 0)" class="s7">
+        <text y="72" class="ch" style="animation-delay:-1.88s">ﾊ</text>
+        <text y="94" class="ch" style="animation-delay:-1.67s">ｻ</text>
+        <text y="116" class="ch" style="animation-delay:-1.47s">ﾍ</text>
+        <text y="138" class="ch" style="animation-delay:-1.26s">ﾆ</text>
+        <text y="160" class="ch" style="animation-delay:-1.05s">ｾ</text>
+        <text y="182" class="ch" style="animation-delay:-0.84s">ﾅ</text>
+        <text y="204" class="ch" style="animation-delay:-0.63s">ﾍ</text>
+        <text y="226" class="ch" style="animation-delay:-0.43s">ﾘ</text>
+        <text y="248" class="ch" style="animation-delay:-0.22s">9</text>
+        <text y="270" class="ch" style="animation-delay:-0.01s">1</text>
+        <text y="292" class="ch" style="animation-delay:0.20s">ﾔ</text>
+        <text y="314" class="ch" style="animation-delay:0.41s">4</text>
+        <text y="336" class="ch" style="animation-delay:0.61s">ｦ</text>
+        <text y="358" class="ch" style="animation-delay:0.82s">ｱ</text>
+        <text y="380" class="ch" style="animation-delay:1.03s">ｰ</text>
+        <text y="402" class="ch" style="animation-delay:1.24s">ｽ</text>
+        <text y="424" class="ch" style="animation-delay:1.45s">ｵ</text>
+        <text y="446" class="ch" style="animation-delay:1.65s">ｹ</text>
+        <text y="468" class="ch" style="animation-delay:1.86s">ﾍ</text>
+        <text y="490" class="ch" style="animation-delay:2.07s">ｳ</text>
+        <text y="512" class="ch" style="animation-delay:2.28s">ｶ</text>
+        <text y="534" class="ch" style="animation-delay:2.49s">ﾑ</text>
+        <text y="556" class="ch" style="animation-delay:2.69s">ﾁ</text>
+        <text y="578" class="ch" style="animation-delay:2.90s">ﾁ</text>
+      </g>
+      <g transform="translate(508 0)" class="s8">
+        <text y="72" class="ch" style="animation-delay:-2.32s">ｴ</text>
+        <text y="94" class="ch" style="animation-delay:-2.09s">ｦ</text>
+        <text y="116" class="ch" style="animation-delay:-1.87s">ﾖ</text>
+        <text y="138" class="ch" style="animation-delay:-1.64s">ﾊ</text>
+        <text y="160" class="ch" style="animation-delay:-1.42s">ﾇ</text>
+        <text y="182" class="ch" style="animation-delay:-1.19s">ﾋ</text>
+        <text y="204" class="ch" style="animation-delay:-0.97s">1</text>
+        <text y="226" class="ch" style="animation-delay:-0.74s">ﾊ</text>
+        <text y="248" class="ch" style="animation-delay:-0.52s">ｷ</text>
+        <text y="270" class="ch" style="animation-delay:-0.29s">+</text>
+        <text y="292" class="ch" style="animation-delay:-0.07s">ﾀ</text>
+        <text y="314" class="ch" style="animation-delay:0.16s">8</text>
+        <text y="336" class="ch" style="animation-delay:0.38s">ﾂ</text>
+        <text y="358" class="ch" style="animation-delay:0.60s">6</text>
+        <text y="380" class="ch" style="animation-delay:0.83s">-</text>
+        <text y="402" class="ch" style="animation-delay:1.05s">1</text>
+        <text y="424" class="ch" style="animation-delay:1.28s">ﾁ</text>
+        <text y="446" class="ch" style="animation-delay:1.50s">ﾗ</text>
+        <text y="468" class="ch" style="animation-delay:1.73s">ﾈ</text>
+        <text y="490" class="ch" style="animation-delay:1.95s">ﾔ</text>
+        <text y="512" class="ch" style="animation-delay:2.18s">ﾑ</text>
+        <text y="534" class="ch" style="animation-delay:2.40s">ﾎ</text>
+        <text y="556" class="ch" style="animation-delay:2.63s">2</text>
+        <text y="578" class="ch" style="animation-delay:2.85s">ﾖ</text>
+      </g>
+      <g transform="translate(543 0)" class="s8">
+        <text y="72" class="ch" style="animation-delay:-0.11s">ﾇ</text>
+        <text y="94" class="ch" style="animation-delay:0.18s">6</text>
+        <text y="116" class="ch" style="animation-delay:0.48s">ｹ</text>
+        <text y="138" class="ch" style="animation-delay:0.78s">ｼ</text>
+        <text y="160" class="ch" style="animation-delay:1.07s">ﾆ</text>
+        <text y="182" class="ch" style="animation-delay:1.37s">ﾝ</text>
+        <text y="204" class="ch" style="animation-delay:1.67s">ｸ</text>
+        <text y="226" class="ch" style="animation-delay:1.97s">ﾀ</text>
+        <text y="248" class="ch" style="animation-delay:2.26s">ｺ</text>
+        <text y="270" class="ch" style="animation-delay:2.56s">ｰ</text>
+        <text y="292" class="ch" style="animation-delay:2.86s">9</text>
+        <text y="314" class="ch" style="animation-delay:3.15s">ｶ</text>
+        <text y="336" class="ch" style="animation-delay:3.45s">ｹ</text>
+        <text y="358" class="ch" style="animation-delay:3.75s">ｦ</text>
+        <text y="380" class="ch" style="animation-delay:4.05s">8</text>
+        <text y="402" class="ch" style="animation-delay:4.34s">0</text>
+        <text y="424" class="ch" style="animation-delay:4.64s">ﾍ</text>
+        <text y="446" class="ch" style="animation-delay:4.94s">ﾚ</text>
+        <text y="468" class="ch" style="animation-delay:5.23s">ﾌ</text>
+        <text y="490" class="ch" style="animation-delay:5.53s">ﾉ</text>
+        <text y="512" class="ch" style="animation-delay:5.83s">ﾀ</text>
+        <text y="534" class="ch" style="animation-delay:6.13s">ﾋ</text>
+        <text y="556" class="ch" style="animation-delay:6.42s">ﾁ</text>
+        <text y="578" class="ch" style="animation-delay:6.72s">ﾗ</text>
+      </g>
+      <g transform="translate(578 0)" class="s7">
+        <text y="72" class="ch" style="animation-delay:-2.35s">ﾆ</text>
+        <text y="94" class="ch" style="animation-delay:-2.15s">+</text>
+        <text y="116" class="ch" style="animation-delay:-1.95s">ｲ</text>
+        <text y="138" class="ch" style="animation-delay:-1.76s">ﾑ</text>
+        <text y="160" class="ch" style="animation-delay:-1.56s">ﾀ</text>
+        <text y="182" class="ch" style="animation-delay:-1.36s">0</text>
+        <text y="204" class="ch" style="animation-delay:-1.17s">ｻ</text>
+        <text y="226" class="ch" style="animation-delay:-0.97s">ﾍ</text>
+        <text y="248" class="ch" style="animation-delay:-0.77s">ｻ</text>
+        <text y="270" class="ch" style="animation-delay:-0.57s">ﾃ</text>
+        <text y="292" class="ch" style="animation-delay:-0.38s">2</text>
+        <text y="314" class="ch" style="animation-delay:-0.18s">ｰ</text>
+        <text y="336" class="ch" style="animation-delay:0.02s">1</text>
+        <text y="358" class="ch" style="animation-delay:0.21s">ﾊ</text>
+        <text y="380" class="ch" style="animation-delay:0.41s">ｿ</text>
+        <text y="402" class="ch" style="animation-delay:0.61s">ｿ</text>
+        <text y="424" class="ch" style="animation-delay:0.81s">ﾈ</text>
+        <text y="446" class="ch" style="animation-delay:1.00s">ﾆ</text>
+        <text y="468" class="ch" style="animation-delay:1.20s">ﾏ</text>
+        <text y="490" class="ch" style="animation-delay:1.40s">0</text>
+        <text y="512" class="ch" style="animation-delay:1.59s">ﾉ</text>
+        <text y="534" class="ch" style="animation-delay:1.79s">-</text>
+        <text y="556" class="ch" style="animation-delay:1.99s">ﾏ</text>
+        <text y="578" class="ch" style="animation-delay:2.18s">ｸ</text>
+      </g>
+      <g transform="translate(613 0)" class="s12">
+        <text y="72" class="ch" style="animation-delay:-1.74s">5</text>
+        <text y="94" class="ch" style="animation-delay:-1.48s">ﾎ</text>
+        <text y="116" class="ch" style="animation-delay:-1.23s">ﾊ</text>
+        <text y="138" class="ch" style="animation-delay:-0.97s">ﾈ</text>
+        <text y="160" class="ch" style="animation-delay:-0.71s">ﾆ</text>
+        <text y="182" class="ch" style="animation-delay:-0.46s">ﾐ</text>
+        <text y="204" class="ch" style="animation-delay:-0.20s">ｰ</text>
+        <text y="226" class="ch" style="animation-delay:0.05s">ﾎ</text>
+        <text y="248" class="ch" style="animation-delay:0.31s">ﾚ</text>
+        <text y="270" class="ch" style="animation-delay:0.57s">ﾂ</text>
+        <text y="292" class="ch" style="animation-delay:0.82s">ﾝ</text>
+        <text y="314" class="ch" style="animation-delay:1.08s">8</text>
+        <text y="336" class="ch" style="animation-delay:1.33s">ｳ</text>
+        <text y="358" class="ch" style="animation-delay:1.59s">ﾊ</text>
+        <text y="380" class="ch" style="animation-delay:1.85s">ﾀ</text>
+        <text y="402" class="ch" style="animation-delay:2.10s">*</text>
+        <text y="424" class="ch" style="animation-delay:2.36s">ﾍ</text>
+        <text y="446" class="ch" style="animation-delay:2.61s">0</text>
+        <text y="468" class="ch" style="animation-delay:2.87s">9</text>
+        <text y="490" class="ch" style="animation-delay:3.12s">ﾅ</text>
+        <text y="512" class="ch" style="animation-delay:3.38s">ｻ</text>
+        <text y="534" class="ch" style="animation-delay:3.64s">ﾅ</text>
+        <text y="556" class="ch" style="animation-delay:3.89s">+</text>
+        <text y="578" class="ch" style="animation-delay:4.15s">ﾇ</text>
+      </g>
+      <g transform="translate(648 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-2.11s">ﾕ</text>
+        <text y="94" class="ch" style="animation-delay:-1.84s">ﾈ</text>
+        <text y="116" class="ch" style="animation-delay:-1.57s">9</text>
+        <text y="138" class="ch" style="animation-delay:-1.30s">-</text>
+        <text y="160" class="ch" style="animation-delay:-1.04s">ﾝ</text>
+        <text y="182" class="ch" style="animation-delay:-0.77s">ﾓ</text>
+        <text y="204" class="ch" style="animation-delay:-0.50s">=</text>
+        <text y="226" class="ch" style="animation-delay:-0.23s">ｸ</text>
+        <text y="248" class="ch" style="animation-delay:0.04s">ｰ</text>
+        <text y="270" class="ch" style="animation-delay:0.31s">ﾑ</text>
+        <text y="292" class="ch" style="animation-delay:0.58s">ﾓ</text>
+        <text y="314" class="ch" style="animation-delay:0.85s">ﾃ</text>
+        <text y="336" class="ch" style="animation-delay:1.12s">ﾌ</text>
+        <text y="358" class="ch" style="animation-delay:1.39s">ﾇ</text>
+        <text y="380" class="ch" style="animation-delay:1.66s">ｿ</text>
+        <text y="402" class="ch" style="animation-delay:1.93s">ﾎ</text>
+        <text y="424" class="ch" style="animation-delay:2.20s">1</text>
+        <text y="446" class="ch" style="animation-delay:2.47s">=</text>
+        <text y="468" class="ch" style="animation-delay:2.74s">ｼ</text>
+        <text y="490" class="ch" style="animation-delay:3.01s">*</text>
+        <text y="512" class="ch" style="animation-delay:3.28s">ｦ</text>
+        <text y="534" class="ch" style="animation-delay:3.55s">ﾜ</text>
+        <text y="556" class="ch" style="animation-delay:3.82s">ﾗ</text>
+        <text y="578" class="ch" style="animation-delay:4.08s">*</text>
+      </g>
+      <g transform="translate(683 0)" class="s11">
+        <text y="72" class="ch" style="animation-delay:-3.14s">Z</text>
+        <text y="94" class="ch" style="animation-delay:-2.95s">Z</text>
+        <text y="116" class="ch" style="animation-delay:-2.77s">ﾘ</text>
+        <text y="138" class="ch" style="animation-delay:-2.58s">ﾑ</text>
+        <text y="160" class="ch" style="animation-delay:-2.39s">ﾁ</text>
+        <text y="182" class="ch" style="animation-delay:-2.21s">ﾆ</text>
+        <text y="204" class="ch" style="animation-delay:-2.02s">+</text>
+        <text y="226" class="ch" style="animation-delay:-1.84s">ﾊ</text>
+        <text y="248" class="ch" style="animation-delay:-1.65s">ｺ</text>
+        <text y="270" class="ch" style="animation-delay:-1.46s">9</text>
+        <text y="292" class="ch" style="animation-delay:-1.28s">ﾓ</text>
+        <text y="314" class="ch" style="animation-delay:-1.09s">8</text>
+        <text y="336" class="ch" style="animation-delay:-0.90s">ｦ</text>
+        <text y="358" class="ch" style="animation-delay:-0.72s">0</text>
+        <text y="380" class="ch" style="animation-delay:-0.53s">ﾕ</text>
+        <text y="402" class="ch" style="animation-delay:-0.34s">ﾕ</text>
+        <text y="424" class="ch" style="animation-delay:-0.16s">ﾓ</text>
+        <text y="446" class="ch" style="animation-delay:0.03s">ｻ</text>
+        <text y="468" class="ch" style="animation-delay:0.22s">ﾃ</text>
+        <text y="490" class="ch" style="animation-delay:0.40s">ﾍ</text>
+        <text y="512" class="ch" style="animation-delay:0.59s">ﾚ</text>
+        <text y="534" class="ch" style="animation-delay:0.78s">ｱ</text>
+        <text y="556" class="ch" style="animation-delay:0.96s">ｲ</text>
+        <text y="578" class="ch" style="animation-delay:1.15s">ｵ</text>
+      </g>
+      <g transform="translate(718 0)" class="s8">
+        <text y="72" class="ch" style="animation-delay:-3.98s">*</text>
+        <text y="94" class="ch" style="animation-delay:-3.73s">1</text>
+        <text y="116" class="ch" style="animation-delay:-3.48s">ﾐ</text>
+        <text y="138" class="ch" style="animation-delay:-3.23s">ｹ</text>
+        <text y="160" class="ch" style="animation-delay:-2.97s">0</text>
+        <text y="182" class="ch" style="animation-delay:-2.72s">*</text>
+        <text y="204" class="ch" style="animation-delay:-2.47s">8</text>
+        <text y="226" class="ch" style="animation-delay:-2.22s">2</text>
+        <text y="248" class="ch" style="animation-delay:-1.96s">ｿ</text>
+        <text y="270" class="ch" style="animation-delay:-1.71s">ﾃ</text>
+        <text y="292" class="ch" style="animation-delay:-1.46s">4</text>
+        <text y="314" class="ch" style="animation-delay:-1.21s">ﾖ</text>
+        <text y="336" class="ch" style="animation-delay:-0.95s">ﾝ</text>
+        <text y="358" class="ch" style="animation-delay:-0.70s">ﾄ</text>
+        <text y="380" class="ch" style="animation-delay:-0.45s">ﾘ</text>
+        <text y="402" class="ch" style="animation-delay:-0.20s">ﾌ</text>
+        <text y="424" class="ch" style="animation-delay:0.06s">0</text>
+        <text y="446" class="ch" style="animation-delay:0.31s">ﾉ</text>
+        <text y="468" class="ch" style="animation-delay:0.56s">ﾔ</text>
+        <text y="490" class="ch" style="animation-delay:0.82s">1</text>
+        <text y="512" class="ch" style="animation-delay:1.07s">ﾘ</text>
+        <text y="534" class="ch" style="animation-delay:1.32s">ﾑ</text>
+        <text y="556" class="ch" style="animation-delay:1.57s">1</text>
+        <text y="578" class="ch" style="animation-delay:1.83s">ｺ</text>
+      </g>
+      <g transform="translate(753 0)" class="s7">
+        <text y="72" class="ch" style="animation-delay:-2.75s">ﾓ</text>
+        <text y="94" class="ch" style="animation-delay:-2.57s">ﾚ</text>
+        <text y="116" class="ch" style="animation-delay:-2.39s">5</text>
+        <text y="138" class="ch" style="animation-delay:-2.21s">ｲ</text>
+        <text y="160" class="ch" style="animation-delay:-2.03s">ｳ</text>
+        <text y="182" class="ch" style="animation-delay:-1.85s">ｲ</text>
+        <text y="204" class="ch" style="animation-delay:-1.67s">ﾂ</text>
+        <text y="226" class="ch" style="animation-delay:-1.49s">ｳ</text>
+        <text y="248" class="ch" style="animation-delay:-1.31s">ｸ</text>
+        <text y="270" class="ch" style="animation-delay:-1.13s">ﾏ</text>
+        <text y="292" class="ch" style="animation-delay:-0.95s">ﾀ</text>
+        <text y="314" class="ch" style="animation-delay:-0.76s">ｦ</text>
+        <text y="336" class="ch" style="animation-delay:-0.58s">6</text>
+        <text y="358" class="ch" style="animation-delay:-0.40s">ﾄ</text>
+        <text y="380" class="ch" style="animation-delay:-0.22s">ｷ</text>
+        <text y="402" class="ch" style="animation-delay:-0.04s">ﾛ</text>
+        <text y="424" class="ch" style="animation-delay:0.14s">5</text>
+        <text y="446" class="ch" style="animation-delay:0.32s">ﾐ</text>
+        <text y="468" class="ch" style="animation-delay:0.50s">2</text>
+        <text y="490" class="ch" style="animation-delay:0.68s">ﾕ</text>
+        <text y="512" class="ch" style="animation-delay:0.86s">ﾆ</text>
+        <text y="534" class="ch" style="animation-delay:1.04s">ｳ</text>
+        <text y="556" class="ch" style="animation-delay:1.22s">3</text>
+        <text y="578" class="ch" style="animation-delay:1.40s">8</text>
+      </g>
+      <g transform="translate(788 0)" class="s8">
+        <text y="72" class="ch" style="animation-delay:-5.16s">ｸ</text>
+        <text y="94" class="ch" style="animation-delay:-4.92s">*</text>
+        <text y="116" class="ch" style="animation-delay:-4.68s">ｳ</text>
+        <text y="138" class="ch" style="animation-delay:-4.44s">ｱ</text>
+        <text y="160" class="ch" style="animation-delay:-4.20s">ﾒ</text>
+        <text y="182" class="ch" style="animation-delay:-3.96s">+</text>
+        <text y="204" class="ch" style="animation-delay:-3.73s">4</text>
+        <text y="226" class="ch" style="animation-delay:-3.49s">ﾔ</text>
+        <text y="248" class="ch" style="animation-delay:-3.25s">ｸ</text>
+        <text y="270" class="ch" style="animation-delay:-3.01s">ｿ</text>
+        <text y="292" class="ch" style="animation-delay:-2.77s">ﾇ</text>
+        <text y="314" class="ch" style="animation-delay:-2.53s">ﾍ</text>
+        <text y="336" class="ch" style="animation-delay:-2.30s">2</text>
+        <text y="358" class="ch" style="animation-delay:-2.06s">ｽ</text>
+        <text y="380" class="ch" style="animation-delay:-1.82s">ｿ</text>
+        <text y="402" class="ch" style="animation-delay:-1.58s">=</text>
+        <text y="424" class="ch" style="animation-delay:-1.34s">1</text>
+        <text y="446" class="ch" style="animation-delay:-1.10s">ﾘ</text>
+        <text y="468" class="ch" style="animation-delay:-0.86s">ﾒ</text>
+        <text y="490" class="ch" style="animation-delay:-0.63s">ｹ</text>
+        <text y="512" class="ch" style="animation-delay:-0.39s">ﾓ</text>
+        <text y="534" class="ch" style="animation-delay:-0.15s">ﾕ</text>
+        <text y="556" class="ch" style="animation-delay:0.09s">-</text>
+        <text y="578" class="ch" style="animation-delay:0.33s">ｾ</text>
+      </g>
+      <g transform="translate(823 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-8.97s">8</text>
+        <text y="94" class="ch" style="animation-delay:-8.76s">5</text>
+        <text y="116" class="ch" style="animation-delay:-8.54s">ﾎ</text>
+        <text y="138" class="ch" style="animation-delay:-8.33s">ｷ</text>
+        <text y="160" class="ch" style="animation-delay:-8.12s">ﾀ</text>
+        <text y="182" class="ch" style="animation-delay:-7.91s">ｻ</text>
+        <text y="204" class="ch" style="animation-delay:-7.69s">ｴ</text>
+        <text y="226" class="ch" style="animation-delay:-7.48s">ﾔ</text>
+        <text y="248" class="ch" style="animation-delay:-7.27s">ｻ</text>
+        <text y="270" class="ch" style="animation-delay:-7.06s">ﾄ</text>
+        <text y="292" class="ch" style="animation-delay:-6.84s">ｽ</text>
+        <text y="314" class="ch" style="animation-delay:-6.63s">ﾛ</text>
+        <text y="336" class="ch" style="animation-delay:-6.42s">ﾍ</text>
+        <text y="358" class="ch" style="animation-delay:-6.21s">ﾑ</text>
+        <text y="380" class="ch" style="animation-delay:-5.99s">ﾊ</text>
+        <text y="402" class="ch" style="animation-delay:-5.78s">3</text>
+        <text y="424" class="ch" style="animation-delay:-5.57s">0</text>
+        <text y="446" class="ch" style="animation-delay:-5.36s">3</text>
+        <text y="468" class="ch" style="animation-delay:-5.14s">ﾕ</text>
+        <text y="490" class="ch" style="animation-delay:-4.93s">ﾝ</text>
+        <text y="512" class="ch" style="animation-delay:-4.72s">ｦ</text>
+        <text y="534" class="ch" style="animation-delay:-4.51s">ﾔ</text>
+        <text y="556" class="ch" style="animation-delay:-4.29s">ｼ</text>
+        <text y="578" class="ch" style="animation-delay:-4.08s">-</text>
+      </g>
+      <g transform="translate(858 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-1.13s">ﾗ</text>
+        <text y="94" class="ch" style="animation-delay:-0.95s">ｻ</text>
+        <text y="116" class="ch" style="animation-delay:-0.76s">ｦ</text>
+        <text y="138" class="ch" style="animation-delay:-0.58s">ﾀ</text>
+        <text y="160" class="ch" style="animation-delay:-0.40s">0</text>
+        <text y="182" class="ch" style="animation-delay:-0.21s">2</text>
+        <text y="204" class="ch" style="animation-delay:-0.03s">8</text>
+        <text y="226" class="ch" style="animation-delay:0.16s">6</text>
+        <text y="248" class="ch" style="animation-delay:0.34s">ﾁ</text>
+        <text y="270" class="ch" style="animation-delay:0.53s">ﾊ</text>
+        <text y="292" class="ch" style="animation-delay:0.71s">ｱ</text>
+        <text y="314" class="ch" style="animation-delay:0.90s">ﾋ</text>
+        <text y="336" class="ch" style="animation-delay:1.08s">5</text>
+        <text y="358" class="ch" style="animation-delay:1.26s">+</text>
+        <text y="380" class="ch" style="animation-delay:1.45s">*</text>
+        <text y="402" class="ch" style="animation-delay:1.63s">0</text>
+        <text y="424" class="ch" style="animation-delay:1.82s">ﾓ</text>
+        <text y="446" class="ch" style="animation-delay:2.00s">1</text>
+        <text y="468" class="ch" style="animation-delay:2.19s">Z</text>
+        <text y="490" class="ch" style="animation-delay:2.37s">8</text>
+        <text y="512" class="ch" style="animation-delay:2.56s">ﾀ</text>
+        <text y="534" class="ch" style="animation-delay:2.74s">ﾂ</text>
+        <text y="556" class="ch" style="animation-delay:2.92s">ｾ</text>
+        <text y="578" class="ch" style="animation-delay:3.11s">ﾏ</text>
+      </g>
+      <g transform="translate(893 0)" class="s12">
+        <text y="72" class="ch" style="animation-delay:-1.31s">9</text>
+        <text y="94" class="ch" style="animation-delay:-1.14s">ﾆ</text>
+        <text y="116" class="ch" style="animation-delay:-0.98s">ｰ</text>
+        <text y="138" class="ch" style="animation-delay:-0.81s">0</text>
+        <text y="160" class="ch" style="animation-delay:-0.65s">ｱ</text>
+        <text y="182" class="ch" style="animation-delay:-0.49s">ﾈ</text>
+        <text y="204" class="ch" style="animation-delay:-0.32s">ﾋ</text>
+        <text y="226" class="ch" style="animation-delay:-0.16s">ｿ</text>
+        <text y="248" class="ch" style="animation-delay:0.01s">ｱ</text>
+        <text y="270" class="ch" style="animation-delay:0.17s">ﾇ</text>
+        <text y="292" class="ch" style="animation-delay:0.34s">6</text>
+        <text y="314" class="ch" style="animation-delay:0.50s">ｵ</text>
+        <text y="336" class="ch" style="animation-delay:0.67s">ﾜ</text>
+        <text y="358" class="ch" style="animation-delay:0.83s">ﾓ</text>
+        <text y="380" class="ch" style="animation-delay:0.99s">ｿ</text>
+        <text y="402" class="ch" style="animation-delay:1.16s">ｷ</text>
+        <text y="424" class="ch" style="animation-delay:1.32s">0</text>
+        <text y="446" class="ch" style="animation-delay:1.49s">ﾍ</text>
+        <text y="468" class="ch" style="animation-delay:1.65s">ｾ</text>
+        <text y="490" class="ch" style="animation-delay:1.82s">0</text>
+        <text y="512" class="ch" style="animation-delay:1.98s">1</text>
+        <text y="534" class="ch" style="animation-delay:2.14s">ｿ</text>
+        <text y="556" class="ch" style="animation-delay:2.31s">9</text>
+        <text y="578" class="ch" style="animation-delay:2.47s">ｲ</text>
+      </g>
+      <g transform="translate(928 0)" class="s12">
+        <text y="72" class="ch" style="animation-delay:-10.07s">ﾀ</text>
+        <text y="94" class="ch" style="animation-delay:-9.78s">+</text>
+        <text y="116" class="ch" style="animation-delay:-9.49s">ｽ</text>
+        <text y="138" class="ch" style="animation-delay:-9.19s">ﾀ</text>
+        <text y="160" class="ch" style="animation-delay:-8.90s">ﾐ</text>
+        <text y="182" class="ch" style="animation-delay:-8.61s">3</text>
+        <text y="204" class="ch" style="animation-delay:-8.31s">ﾁ</text>
+        <text y="226" class="ch" style="animation-delay:-8.02s">ｼ</text>
+        <text y="248" class="ch" style="animation-delay:-7.73s">ﾊ</text>
+        <text y="270" class="ch" style="animation-delay:-7.43s">ｷ</text>
+        <text y="292" class="ch" style="animation-delay:-7.14s">-</text>
+        <text y="314" class="ch" style="animation-delay:-6.85s">4</text>
+        <text y="336" class="ch" style="animation-delay:-6.55s">ﾆ</text>
+        <text y="358" class="ch" style="animation-delay:-6.26s">ﾇ</text>
+        <text y="380" class="ch" style="animation-delay:-5.96s">ﾈ</text>
+        <text y="402" class="ch" style="animation-delay:-5.67s">5</text>
+        <text y="424" class="ch" style="animation-delay:-5.38s">ﾛ</text>
+        <text y="446" class="ch" style="animation-delay:-5.08s">ﾈ</text>
+        <text y="468" class="ch" style="animation-delay:-4.79s">-</text>
+        <text y="490" class="ch" style="animation-delay:-4.50s">ﾋ</text>
+        <text y="512" class="ch" style="animation-delay:-4.20s">ﾔ</text>
+        <text y="534" class="ch" style="animation-delay:-3.91s">4</text>
+        <text y="556" class="ch" style="animation-delay:-3.62s">ﾚ</text>
+        <text y="578" class="ch" style="animation-delay:-3.32s">1</text>
+      </g>
+      <g transform="translate(963 0)" class="s9">
+        <text y="72" class="ch" style="animation-delay:-6.65s">ﾅ</text>
+        <text y="94" class="ch" style="animation-delay:-6.48s">ﾕ</text>
+        <text y="116" class="ch" style="animation-delay:-6.31s">-</text>
+        <text y="138" class="ch" style="animation-delay:-6.14s">ﾑ</text>
+        <text y="160" class="ch" style="animation-delay:-5.97s">ﾁ</text>
+        <text y="182" class="ch" style="animation-delay:-5.79s">ｷ</text>
+        <text y="204" class="ch" style="animation-delay:-5.62s">ﾈ</text>
+        <text y="226" class="ch" style="animation-delay:-5.45s">Z</text>
+        <text y="248" class="ch" style="animation-delay:-5.28s">ｾ</text>
+        <text y="270" class="ch" style="animation-delay:-5.11s">ﾍ</text>
+        <text y="292" class="ch" style="animation-delay:-4.94s">ｺ</text>
+        <text y="314" class="ch" style="animation-delay:-4.76s">ﾂ</text>
+        <text y="336" class="ch" style="animation-delay:-4.59s">-</text>
+        <text y="358" class="ch" style="animation-delay:-4.42s">ｶ</text>
+        <text y="380" class="ch" style="animation-delay:-4.25s">ｾ</text>
+        <text y="402" class="ch" style="animation-delay:-4.08s">*</text>
+        <text y="424" class="ch" style="animation-delay:-3.91s">4</text>
+        <text y="446" class="ch" style="animation-delay:-3.73s">ｼ</text>
+        <text y="468" class="ch" style="animation-delay:-3.56s">ﾃ</text>
+        <text y="490" class="ch" style="animation-delay:-3.39s">1</text>
+        <text y="512" class="ch" style="animation-delay:-3.22s">ｳ</text>
+        <text y="534" class="ch" style="animation-delay:-3.05s">ﾗ</text>
+        <text y="556" class="ch" style="animation-delay:-2.87s">ﾐ</text>
+        <text y="578" class="ch" style="animation-delay:-2.70s">ﾃ</text>
+      </g>
+    </g>
+
+    <rect x="40" y="62" width="920" height="548" fill="#000000" fill-opacity="0.45" />
+    <rect width="1000" height="640" fill="url(#vignette)" />
+
+    <!-- LEFT CONTENT -->
+    <g class="mono" filter="url(#textGlow)">
+      <g clip-path="url(#cw)"><text x="80" y="108" class="label">$ whoami</text></g>
+
+      <g clip-path="url(#cn)">
+        <text x="82" y="160" class="title" fill="#c8ffc8" opacity="0.45">NIKOLAY<animate attributeName="x" values="82;78;84;82" dur="2.6s" begin="7s" repeatCount="indefinite" /></text>
+        <text x="78" y="160" class="title" fill="#008a22" opacity="0.4">NIKOLAY<animate attributeName="x" values="78;82;76;78" dur="2.6s" begin="7s" repeatCount="indefinite" /></text>
+        <text x="80" y="160" class="title">NIKOLAY<animate attributeName="opacity" values="1;0.85;1;0.7;1" dur="5s" begin="7s" repeatCount="indefinite" /></text>
+      </g>
+
+      <g clip-path="url(#cv)">
+        <text x="82" y="208" class="title" fill="#c8ffc8" opacity="0.45">VERESHCHAGIN<animate attributeName="x" values="82;78;84;82" dur="2.6s" begin="5.7s" repeatCount="indefinite" /></text>
+        <text x="78" y="208" class="title" fill="#008a22" opacity="0.4">VERESHCHAGIN<animate attributeName="x" values="78;82;76;78" dur="2.6s" begin="5.7s" repeatCount="indefinite" /></text>
+        <text x="80" y="208" class="title">VERESHCHAGIN<animate attributeName="opacity" values="1;0.85;1;0.7;1" dur="5s" begin="5s" repeatCount="indefinite" /></text>
+      </g>
+
+      <g clip-path="url(#cr)"><text x="80" y="258" class="label">$ cat ./role.txt</text></g>
+      <g clip-path="url(#cse)"><text x="80" y="290" class="role">&gt; SOFTWARE ENGINEER</text></g>
+
+      <g clip-path="url(#cs)"><text x="80" y="340" class="label">$ cat ./stack.txt</text></g>
+      <g clip-path="url(#typeClip)"><text x="80" y="370" class="line">typescript · react · next.js · node.js · graphql</text></g>
+      <g clip-path="url(#typeClip2)"><text x="80" y="392" class="dim">postgresql · mongodb · redis · docker · aws</text></g>
+      <rect x="80" y="356" width="8" height="18" fill="#00ff41">
+        <animate attributeName="x" values="80;500;500;80;460;460;80;500;80;80" keyTimes="0;0.17;0.20;0.22;0.39;0.82;0.86;0.88;0.92;1" dur="9s" begin="8.30s" repeatCount="indefinite" />
+        <animate attributeName="y" values="356;356;356;378;378;378;378;356;356;356" keyTimes="0;0.17;0.20;0.22;0.39;0.82;0.86;0.88;0.92;1" dur="9s" begin="8.30s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="1;0;1" dur="0.6s" begin="8.30s" repeatCount="indefinite" />
+      </rect>
+
+      <g clip-path="url(#ccl)"><text x="80" y="432" class="label">$ ./contact.sh</text></g>
+      <g clip-path="url(#cc1)"><text x="80" y="458" class="line"><tspan fill="#c8ffc8">@ </tspan> nikolveresh@gmail.com</text></g>
+      <g clip-path="url(#cc2)"><text x="80" y="480" class="line"><tspan fill="#c8ffc8">in</tspan>  linkedin.com/in/nikola_ver</text></g>
+      <g clip-path="url(#cc3)"><text x="80" y="502" class="line"><tspan fill="#c8ffc8">gh</tspan>  github.com/nikola_ver</text></g>
+
+      <g transform="translate(80 542)" opacity="0">
+        <animate attributeName="opacity" from="0" to="1" begin="9.90s" dur="0.30s" fill="freeze" />
+        <rect x="-4" y="-20" width="208" height="32" rx="4" fill="none" stroke="#00ff41" stroke-opacity="0.6">
+          <animate attributeName="stroke-opacity" values="0.6;0;0.6" dur="2.2s" begin="7s" repeatCount="indefinite" />
+          <animate attributeName="x" values="-4;-10;-4" dur="2.2s" begin="7s" repeatCount="indefinite" />
+          <animate attributeName="y" values="-20;-24;-20" dur="2.2s" begin="7s" repeatCount="indefinite" />
+          <animate attributeName="width" values="208;220;208" dur="2.2s" begin="7s" repeatCount="indefinite" />
+          <animate attributeName="height" values="32;40;32" dur="2.2s" begin="7s" repeatCount="indefinite" />
+        </rect>
+        <rect x="0" y="-16" width="200" height="24" rx="3" fill="#00ff41" fill-opacity="0.12" stroke="#00ff41" stroke-opacity="0.7" />
+        <circle cx="14" cy="-4" r="4" fill="#00ff41">
+          <animate attributeName="opacity" values="1;0.25;1" dur="1.4s" begin="7s" repeatCount="indefinite" />
+          <animate attributeName="r" values="4;5.2;4" dur="1.4s" begin="7s" repeatCount="indefinite" />
+        </circle>
+        <text x="26" y="0" class="badge">STATUS : ONLINE</text>
+      </g>
+
+      <text x="80" y="585" class="line" opacity="0">
+        <animate attributeName="opacity" from="0" to="1" begin="10.20s" dur="0.20s" fill="freeze" />
+        $ <tspan fill="#c8ffc8">_<animate attributeName="opacity" values="1;0;1" dur="1s" begin="10.40s" repeatCount="indefinite" /></tspan>
+      </text>
+    </g>
+
+    <!-- GLOBE -->
+    <g>
+      <g fill="none" stroke="#00ff41">
+        <circle cx="780" cy="320" r="130" stroke-width="2"><animate attributeName="r" values="130;180" dur="3.2s" begin="7s" repeatCount="indefinite" /><animate attributeName="stroke-opacity" values="0.6;0" dur="3.2s" begin="7s" repeatCount="indefinite" /><animate attributeName="stroke-width" values="2;0.3" dur="3.2s" begin="7s" repeatCount="indefinite" /></circle>
+        <circle cx="780" cy="320" r="130" stroke-width="2"><animate attributeName="r" values="130;180" dur="3.2s" begin="5.9s" repeatCount="indefinite" /><animate attributeName="stroke-opacity" values="0.6;0" dur="3.2s" begin="5.9s" repeatCount="indefinite" /><animate attributeName="stroke-width" values="2;0.3" dur="3.2s" begin="5.9s" repeatCount="indefinite" /></circle>
+        <circle cx="780" cy="320" r="130" stroke-width="2"><animate attributeName="r" values="130;180" dur="3.2s" begin="4.9s" repeatCount="indefinite" /><animate attributeName="stroke-opacity" values="0.6;0" dur="3.2s" begin="4.9s" repeatCount="indefinite" /><animate attributeName="stroke-width" values="2;0.3" dur="3.2s" begin="4.9s" repeatCount="indefinite" /></circle>
+      </g>
+
+      <circle cx="780" cy="320" r="150" fill="url(#atmo)" filter="url(#bigGlow)"><animate attributeName="r" values="150;156;150" dur="4s" begin="7s" repeatCount="indefinite" /></circle>
+      <circle cx="780" cy="320" r="130" fill="url(#sphere)" />
+
+      <g clip-path="url(#globeClip)" stroke="#00ff41" fill="none" stroke-linecap="round" filter="url(#glow)">
+        <g stroke-opacity="0.3" stroke-width="1">
+          <ellipse cx="780" cy="320" rx="130" ry="16" />
+          <ellipse cx="780" cy="320" rx="126" ry="48" />
+          <ellipse cx="780" cy="320" rx="117" ry="80" />
+          <ellipse cx="780" cy="320" rx="104" ry="108" />
+          <ellipse cx="780" cy="284" rx="125" ry="12" />
+          <ellipse cx="780" cy="248" rx="110" ry="10" />
+          <ellipse cx="780" cy="356" rx="125" ry="12" />
+          <ellipse cx="780" cy="392" rx="110" ry="10" />
+        </g>
+
+        <g stroke-opacity="0.55" stroke-width="1.2">
+          <ellipse cx="780" cy="320" rx="130" ry="130"><animate attributeName="rx" dur="8s" repeatCount="indefinite" values="130;104;52;0;52;104;130;104;52;0;52;104;130" /><animate attributeName="stroke-opacity" dur="8s" repeatCount="indefinite" values="0.7;0.55;0.3;0.12;0.3;0.55;0.7;0.55;0.3;0.12;0.3;0.55;0.7" /></ellipse>
+          <ellipse cx="780" cy="320" rx="104" ry="130"><animate attributeName="rx" dur="8s" repeatCount="indefinite" values="104;52;0;52;104;130;104;52;0;52;104;130;104" /></ellipse>
+          <ellipse cx="780" cy="320" rx="52" ry="130"><animate attributeName="rx" dur="8s" repeatCount="indefinite" values="52;0;52;104;130;104;52;0;52;104;130;104;52" /></ellipse>
+          <ellipse cx="780" cy="320" rx="0" ry="130"><animate attributeName="rx" dur="8s" repeatCount="indefinite" values="0;52;104;130;104;52;0;52;104;130;104;52;0" /></ellipse>
+          <ellipse cx="780" cy="320" rx="78" ry="130" stroke-opacity="0.35"><animate attributeName="rx" dur="8s" repeatCount="indefinite" values="78;26;26;78;117;121;78;26;26;78;117;121;78" /></ellipse>
+          <ellipse cx="780" cy="320" rx="117" ry="130" stroke-opacity="0.35"><animate attributeName="rx" dur="8s" repeatCount="indefinite" values="117;121;78;26;26;78;117;121;78;26;26;78;117" /></ellipse>
+        </g>
+
+        <g>
+          <animateTransform attributeName="transform" type="rotate" from="0 780 320" to="360 780 320" dur="4.5s" begin="7s" repeatCount="indefinite" />
+          <path d="M 780 320 L 910.00 320.00 A 130 130 0 0 0 909.43 307.86 Z" fill="#00ff65" opacity="0.55" />
+          <path d="M 780 320 L 909.43 307.86 A 130 130 0 0 0 907.73 295.83 Z" fill="#00ff65" opacity="0.489" />
+          <path d="M 780 320 L 907.73 295.83 A 130 130 0 0 0 904.92 284.01 Z" fill="#00ff65" opacity="0.43" />
+          <path d="M 780 320 L 904.92 284.01 A 130 130 0 0 0 901.01 272.51 Z" fill="#00ff65" opacity="0.374" />
+          <path d="M 780 320 L 901.01 272.51 A 130 130 0 0 0 896.05 261.41 Z" fill="#00ff65" opacity="0.321" />
+          <path d="M 780 320 L 896.05 261.41 A 130 130 0 0 0 890.07 250.84 Z" fill="#00ff65" opacity="0.271" />
+          <path d="M 780 320 L 890.07 250.84 A 130 130 0 0 0 883.14 240.86 Z" fill="#00ff65" opacity="0.225" />
+          <path d="M 780 320 L 883.14 240.86 A 130 130 0 0 0 875.30 231.58 Z" fill="#00ff65" opacity="0.181" />
+          <path d="M 780 320 L 875.30 231.58 A 130 130 0 0 0 866.63 223.07 Z" fill="#00ff65" opacity="0.142" />
+          <path d="M 780 320 L 866.63 223.07 A 130 130 0 0 0 857.20 215.40 Z" fill="#00ff65" opacity="0.106" />
+          <path d="M 780 320 L 857.20 215.40 A 130 130 0 0 0 847.09 208.65 Z" fill="#00ff65" opacity="0.074" />
+          <path d="M 780 320 L 847.09 208.65 A 130 130 0 0 0 836.40 202.87 Z" fill="#00ff65" opacity="0.047" />
+          <path d="M 780 320 L 836.40 202.87 A 130 130 0 0 0 825.22 198.12 Z" fill="#00ff65" opacity="0.024" />
+          <path d="M 780 320 L 825.22 198.12 A 130 130 0 0 0 813.65 194.43 Z" fill="#00ff65" opacity="0.008" />
+          <line x1="780" y1="320" x2="910" y2="320" stroke="#eaffea" stroke-width="1.5" stroke-opacity="1" />
+          <circle cx="910" cy="320" r="2.5" fill="#eaffea" />
+        </g>
+
+        <g fill="#c8ffc8">
+          <circle cx="702" cy="290" r="3"><animate attributeName="r" values="0;4;0" dur="4s" begin="7s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="4s" begin="7s" repeatCount="indefinite" /></circle>
+          <circle cx="820" cy="272" r="3"><animate attributeName="r" values="0;4;0" dur="4s" begin="6s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="4s" begin="6s" repeatCount="indefinite" /></circle>
+          <circle cx="760" cy="352" r="3"><animate attributeName="r" values="0;4;0" dur="4s" begin="5s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="4s" begin="5s" repeatCount="indefinite" /></circle>
+          <circle cx="852" cy="340" r="3"><animate attributeName="r" values="0;4;0" dur="4s" begin="4s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="4s" begin="4s" repeatCount="indefinite" /></circle>
+          <circle cx="725" cy="360" r="3"><animate attributeName="r" values="0;4;0" dur="4s" begin="5.5s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="4s" begin="5.5s" repeatCount="indefinite" /></circle>
+          <circle cx="805" cy="312" r="3"><animate attributeName="r" values="0;4;0" dur="4s" begin="4.5s" repeatCount="indefinite" /><animate attributeName="opacity" values="0;1;0" dur="4s" begin="4.5s" repeatCount="indefinite" /></circle>
+        </g>
+
+        <g stroke="#00ff41" stroke-width="1.1" fill="none" stroke-linecap="round">
+          <path d="M 702 290 Q 760 240 805 312" stroke-dasharray="130" stroke-dashoffset="130"><animate attributeName="stroke-dashoffset" values="130;0;-130" dur="4s" begin="7s" repeatCount="indefinite" /><animate attributeName="stroke-opacity" values="0;0.9;0" dur="4s" begin="7s" repeatCount="indefinite" /></path>
+          <path d="M 820 272 Q 790 320 725 360" stroke-dasharray="140" stroke-dashoffset="140"><animate attributeName="stroke-dashoffset" values="140;0;-140" dur="4s" begin="5.7s" repeatCount="indefinite" /><animate attributeName="stroke-opacity" values="0;0.9;0" dur="4s" begin="5.7s" repeatCount="indefinite" /></path>
+          <path d="M 760 352 Q 820 370 852 340" stroke-dasharray="110" stroke-dashoffset="110"><animate attributeName="stroke-dashoffset" values="110;0;-110" dur="4s" begin="4.4s" repeatCount="indefinite" /><animate attributeName="stroke-opacity" values="0;0.9;0" dur="4s" begin="4.4s" repeatCount="indefinite" /></path>
+        </g>
+
+        <circle cx="780" cy="320" r="130" fill="url(#highlight)" />
+      </g>
+
+      <ellipse cx="780" cy="320" rx="130" ry="16" fill="none" stroke="#00ff41" stroke-opacity="0.55" stroke-width="1" filter="url(#glow)" />
+      <circle cx="780" cy="320" r="130" fill="none" stroke="#00ff41" stroke-width="1.3" filter="url(#glow)"><animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="3s" begin="7s" repeatCount="indefinite" /></circle>
+
+      <g filter="url(#glow)">
+        <circle r="4" fill="#c8ffc8"><animateMotion dur="7s" begin="7s" repeatCount="indefinite" path="M 780 170 A 150 150 0 1 1 780 470 A 150 150 0 1 1 780 170 Z" /><animate attributeName="r" values="3;5;3" dur="1.5s" begin="7s" repeatCount="indefinite" /></circle>
+        <circle r="3" fill="#00ff41" opacity="0.7"><animateMotion dur="11s" begin="7s" repeatCount="indefinite" path="M 780 150 A 170 170 0 1 0 780 490 A 170 170 0 1 0 780 150 Z" /></circle>
+      </g>
+
+      <g class="mono">
+        <g clip-path="url(#cgt1)"><text x="600" y="500" fill="#00ff41" font-size="12" opacity="0.9">&gt; tracing visitors across the grid<animate attributeName="opacity" values="0.9;0.5;0.9" dur="2.2s" begin="10.00s" repeatCount="indefinite" /></text></g>
+        <g clip-path="url(#cgt2)"><text x="680" y="518" fill="#00c834" font-size="11" opacity="0.75">[ there is no spoon ]</text></g>
+      </g>
+    </g>
+
+    <g opacity="0.08">
+      <rect width="1000" height="2" y="0" fill="#00ff41"><animate attributeName="y" values="0;640;0" dur="6s" begin="7s" repeatCount="indefinite" /></rect>
+      <rect width="1000" height="1" y="0" fill="#c8ffc8" opacity="0.6"><animate attributeName="y" values="640;0;640" dur="9s" begin="7s" repeatCount="indefinite" /></rect>
+    </g>
+
+    <rect width="1000" height="640" fill="#00ff41" opacity="0"><animate attributeName="opacity" values="0;0;0.04;0;0;0.02;0" dur="7s" begin="7s" repeatCount="indefinite" /></rect>
+  </g>
+</svg>
